@@ -19,7 +19,7 @@ extension UIScrollView {
             self.contentInset = inset
         }
     }
-    
+
     var insetBottom: CGFloat {
         get {
             return self.contentInset.bottom
@@ -30,7 +30,7 @@ extension UIScrollView {
             self.contentInset = inset
         }
     }
-    
+
     var insetLeft: CGFloat {
         get {
             return self.contentInset.left
@@ -41,7 +41,7 @@ extension UIScrollView {
             self.contentInset = inset
         }
     }
-    
+
     var insetRight: CGFloat {
         get {
             return self.contentInset.right
@@ -52,7 +52,7 @@ extension UIScrollView {
             self.contentInset = inset
         }
     }
-    
+
     var offsetX: CGFloat {
         get {
             return self.contentOffset.x
@@ -63,7 +63,7 @@ extension UIScrollView {
             self.contentOffset = inset
         }
     }
-    
+
     var offsetY: CGFloat {
         get {
             return self.contentOffset.y
@@ -74,7 +74,7 @@ extension UIScrollView {
             self.contentOffset = inset
         }
     }
-    
+
     var contentWidth: CGFloat {
         get {
             return self.contentSize.width
@@ -85,7 +85,7 @@ extension UIScrollView {
             self.contentSize = inset
         }
     }
-    
+
     var contentHeight: CGFloat {
         get {
             return self.contentSize.height

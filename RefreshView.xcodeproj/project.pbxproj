@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		867980791CE460ED0017E17E /* CustomRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867980781CE460ED0017E17E /* CustomRefreshView.swift */; };
+		8679807C1CE484AD0017E17E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8679807E1CE484AD0017E17E /* Localizable.strings */; };
+		867980811CE4858C0017E17E /* InternationalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867980801CE4858C0017E17E /* InternationalControl.swift */; };
+		86E82F1C1CEEBC03009AE75F /* CustomRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E82F1B1CEEBC03009AE75F /* CustomRefreshLoadingView.swift */; };
+		C4A86C7C1C7613A000C42235 /* Contant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A86C7B1C7613A000C42235 /* Contant.swift */; };
 		C4E781DA1C63451D004AAC64 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E781D91C63451D004AAC64 /* images.xcassets */; };
 		C4F5765F1C633415007E04CC /* CustomRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5765C1C633415007E04CC /* CustomRefreshHeaderView.swift */; };
 		C4F576601C633415007E04CC /* CustomRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5765D1C633415007E04CC /* CustomRefreshFooterView.swift */; };
@@ -16,8 +21,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		867980781CE460ED0017E17E /* CustomRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshView.swift; sourceTree = "<group>"; };
+		8679807D1CE484AD0017E17E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8679807F1CE484C40017E17E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		867980801CE4858C0017E17E /* InternationalControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternationalControl.swift; sourceTree = "<group>"; };
+		86E82F1B1CEEBC03009AE75F /* CustomRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshLoadingView.swift; sourceTree = "<group>"; };
 		C40F22FF1C6331EE00F075CF /* RefreshView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RefreshView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40F23041C6331EE00F075CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4A86C7B1C7613A000C42235 /* Contant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contant.swift; sourceTree = "<group>"; };
 		C4E781D91C63451D004AAC64 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		C4F5765C1C633415007E04CC /* CustomRefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshHeaderView.swift; sourceTree = "<group>"; };
 		C4F5765D1C633415007E04CC /* CustomRefreshFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshFooterView.swift; sourceTree = "<group>"; };
@@ -59,6 +70,7 @@
 				C4E781D81C633D8E004AAC64 /* Source */,
 				C40F23041C6331EE00F075CF /* Info.plist */,
 				C4E781D91C63451D004AAC64 /* images.xcassets */,
+				8679807E1CE484AD0017E17E /* Localizable.strings */,
 			);
 			path = RefreshView;
 			sourceTree = "<group>";
@@ -66,11 +78,15 @@
 		C4E781D81C633D8E004AAC64 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C4F576721C633771007E04CC /* RefreshHeader+Extensition.swift */,
 				C4F5766A1C633546007E04CC /* UIView+Extension.swift */,
+				867980801CE4858C0017E17E /* InternationalControl.swift */,
+				C4F576721C633771007E04CC /* RefreshHeader+Extensition.swift */,
 				C4F5766B1C633546007E04CC /* UIScrollView+Extension.swift */,
 				C4F5765C1C633415007E04CC /* CustomRefreshHeaderView.swift */,
 				C4F5765D1C633415007E04CC /* CustomRefreshFooterView.swift */,
+				86E82F1B1CEEBC03009AE75F /* CustomRefreshLoadingView.swift */,
+				867980781CE460ED0017E17E /* CustomRefreshView.swift */,
+				C4A86C7B1C7613A000C42235 /* Contant.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -126,6 +142,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = C40F22F51C6331EE00F075CF;
 			productRefGroup = C40F23001C6331EE00F075CF /* Products */;
@@ -143,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4E781DA1C63451D004AAC64 /* images.xcassets in Resources */,
+				8679807C1CE484AD0017E17E /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,14 +172,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4F576731C633771007E04CC /* RefreshHeader+Extensition.swift in Sources */,
+				867980791CE460ED0017E17E /* CustomRefreshView.swift in Sources */,
 				C4F5766C1C633546007E04CC /* UIView+Extension.swift in Sources */,
+				86E82F1C1CEEBC03009AE75F /* CustomRefreshLoadingView.swift in Sources */,
 				C4F576601C633415007E04CC /* CustomRefreshFooterView.swift in Sources */,
+				C4A86C7C1C7613A000C42235 /* Contant.swift in Sources */,
 				C4F5765F1C633415007E04CC /* CustomRefreshHeaderView.swift in Sources */,
+				867980811CE4858C0017E17E /* InternationalControl.swift in Sources */,
 				C4F5766D1C633546007E04CC /* UIScrollView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8679807E1CE484AD0017E17E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8679807D1CE484AD0017E17E /* en */,
+				8679807F1CE484C40017E17E /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C40F23051C6331EE00F075CF /* Debug */ = {
@@ -201,7 +235,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -243,7 +277,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -264,7 +298,7 @@
 				INFOPLIST_FILE = RefreshView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sean.RefreshView;
+				PRODUCT_BUNDLE_IDENTIFIER = Teambition.RefreshView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -282,7 +316,7 @@
 				INFOPLIST_FILE = RefreshView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sean.RefreshView;
+				PRODUCT_BUNDLE_IDENTIFIER = Teambition.RefreshView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

@@ -8,16 +8,6 @@
 
 import UIKit
 
-let π = CGFloat(M_PI)
-let RefreshKeyPathContentOffset = "contentOffset"
-let RefreshKeyPathContentInset = "contentInset"
-let RefreshKeyPathContentSize = "contentSize"
-let RefreshKeyPathPanState = "state"
-let RefreshHeaderHeight: CGFloat = 54.0
-let RefreshFooterHeight: CGFloat = 44.0
-
-let RefreshFastAnimationDuration = 0.25
-
 extension UIView {
     var originX: CGFloat {
         get {
@@ -29,7 +19,7 @@ extension UIView {
             self.frame = frame
         }
     }
-    
+
     var originY: CGFloat {
         get {
             return self.frame.origin.y
@@ -40,7 +30,7 @@ extension UIView {
             self.frame = frame
         }
     }
-    
+
     var sizeWidth: CGFloat {
         get {
             return self.frame.size.width
@@ -51,7 +41,7 @@ extension UIView {
             self.frame = frame
         }
     }
-    
+
     var sizeHeight: CGFloat {
         get {
             return self.frame.size.height
@@ -62,7 +52,7 @@ extension UIView {
             self.frame = frame
         }
     }
-    
+
     var size: CGSize {
         get {
             return self.frame.size
@@ -73,7 +63,7 @@ extension UIView {
             self.frame = frame
         }
     }
-    
+
     var origin: CGPoint {
         get {
             return self.frame.origin

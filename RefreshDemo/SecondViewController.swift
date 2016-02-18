@@ -9,27 +9,29 @@
 import UIKit
 import RefreshView
 
-class SecondViewController: UITableViewController {
-    
-    var content = [String]()
 
+class SecondViewController: UITableViewController {
+
+    var content = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for i in 1...20 {
-            self.content.append(String(i))
-        }
-        
-        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock({
-            
-            let minseconds = 3 * Double(NSEC_PER_SEC)
-            let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
-            dispatch_after(dtime, dispatch_get_main_queue(), {
-                self.tableView.refreshHeader?.endRefreshing()
-            });
+
+        self.tableView.tableFooterView = UIView()
+        self.tableView.showLoadingView = true
+        self.tableView.loadingView?.offsetY = 30
+
+        let minseconds = 2 * Double(NSEC_PER_SEC)
+        let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
+        dispatch_after(dtime, dispatch_get_main_queue(), {
+            for i in 1...10 {
+                self.content.append(String(i))
+                self.tableView.reloadData()
+                self.tableView.showLoadingView = false
+                self.tableView.refreshFooter?.showLoadingView = true
+            }
         })
-        
-        self.tableView.refreshFooter = CustomRefreshFooterView.footerWithRefreshingBlock({
+
+        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock({
             let minseconds = 3 * Double(NSEC_PER_SEC)
             let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
             dispatch_after(dtime, dispatch_get_main_queue(), {
@@ -38,11 +40,26 @@ class SecondViewController: UITableViewController {
                     self.content.append(String(i))
                     self.tableView.reloadData()
                 }
+                self.tableView.refreshHeader?.endRefreshing()
+                self.tableView.refreshFooter?.showLoadingView = false
+            })
+        }, customBackgroundColor: UIColor.whiteColor())
+
+        self.tableView.refreshFooter = CustomRefreshFooterView.footerWithLoadingText("Loading More Data", startLoading: {
+            let minseconds = 1 * Double(NSEC_PER_SEC)
+            let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
+            dispatch_after(dtime, dispatch_get_main_queue(), {
+                let count = self.content.count
+                for i in count+1...count+5 {
+                    self.content.append(String(i))
+                    self.tableView.reloadData()
+                }
                 self.tableView.refreshFooter?.endRefreshing()
-            });
+                self.tableView.refreshFooter?.showLoadingView = count < 20
+            })
         })
     }
-    
+
     func dismiss() {
         self.tableView.refreshHeader?.endRefreshing()
     }
@@ -70,50 +87,4 @@ class SecondViewController: UITableViewController {
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C49259681C4F562D00C56650"
+               BlueprintIdentifier = "86ECCB291C97F535008A6D58"
                BuildableName = "RefreshDemo.app"
                BlueprintName = "RefreshDemo"
                ReferencedContainer = "container:RefreshDemo.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C49259681C4F562D00C56650"
+            BlueprintIdentifier = "86ECCB291C97F535008A6D58"
             BuildableName = "RefreshDemo.app"
             BlueprintName = "RefreshDemo"
             ReferencedContainer = "container:RefreshDemo.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C49259681C4F562D00C56650"
+            BlueprintIdentifier = "86ECCB291C97F535008A6D58"
             BuildableName = "RefreshDemo.app"
             BlueprintName = "RefreshDemo"
             ReferencedContainer = "container:RefreshDemo.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C49259681C4F562D00C56650"
+            BlueprintIdentifier = "86ECCB291C97F535008A6D58"
             BuildableName = "RefreshDemo.app"
             BlueprintName = "RefreshDemo"
             ReferencedContainer = "container:RefreshDemo.xcodeproj">

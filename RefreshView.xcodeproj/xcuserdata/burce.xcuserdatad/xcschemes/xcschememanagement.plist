@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>RefreshDemo.xcscheme</key>
+		<key>RefreshView.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>C49259681C4F562D00C56650</key>
+		<key>C40F22FE1C6331EE00F075CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
