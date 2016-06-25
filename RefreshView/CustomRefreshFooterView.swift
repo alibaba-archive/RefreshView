@@ -81,7 +81,7 @@ public class CustomRefreshFooterView: CustomRefreshView {
         return newImage
     }
 
-    func cellsCount() -> Int {
+    private func cellsCount() -> Int {
         var count = 0
         if let tableView = self.scrollView as? UITableView {
             let sections = tableView.numberOfSections
@@ -173,13 +173,13 @@ public class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    func executeRefreshingCallback() {
+    private func executeRefreshingCallback() {
         if let start = start {
             start()
         }
     }
 
-    func scrollViewContentOffsetDidChange(change: [String : AnyObject]?) {
+    private func scrollViewContentOffsetDidChange(change: [String : AnyObject]?) {
         if state != .Idle || !isAutomaticallyRefresh || originY == 0 || cellsCount() == 0 || !showLoadingView {
             return
         }
@@ -199,11 +199,11 @@ public class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    func scrollViewContentSizeDidChange(change: [String : AnyObject]?) {
+    private func scrollViewContentSizeDidChange(change: [String : AnyObject]?) {
         originY = scrollView!.contentHeight
     }
 
-    func scrollViewPanStateDidChange(chnage: [String : AnyObject]?) {
+    private func scrollViewPanStateDidChange(chnage: [String : AnyObject]?) {
         if state != .Idle || cellsCount() == 0 || !showLoadingView {
             return
         }
@@ -233,7 +233,7 @@ public class CustomRefreshFooterView: CustomRefreshView {
         return footer
     }
 
-    func startAnimation() {
+    private func startAnimation() {
         placeSubviews()
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
@@ -243,7 +243,7 @@ public class CustomRefreshFooterView: CustomRefreshView {
         circleImageView?.layer.addAnimation(rotateAnimation, forKey: kCustomRefreshAnimationKey)
     }
 
-    func addObservers() {
+    private func addObservers() {
         let options = NSKeyValueObservingOptions([.New, .Old])
         scrollView?.addObserver(self, forKeyPath: kRefreshKeyPathContentOffset, options: NSKeyValueObservingOptions([.New, .Old]), context: nil)
         scrollView?.addObserver(self, forKeyPath: kRefreshKeyPathContentSize, options: options, context: nil)
@@ -251,14 +251,14 @@ public class CustomRefreshFooterView: CustomRefreshView {
         pan?.addObserver(self, forKeyPath: kRefreshKeyPathPanState, options: options, context: nil)
     }
 
-    func removeObservers() {
+    private func removeObservers() {
         superview?.removeObserver(self, forKeyPath: kRefreshKeyPathContentOffset)
         superview?.removeObserver(self, forKeyPath: kRefreshKeyPathContentSize)
         pan?.removeObserver(self, forKeyPath: kRefreshKeyPathPanState)
         pan = nil
     }
 
-    func placeSubviews() {
+    private func placeSubviews() {
         if cellsCount() != 0 {
             let text = (statusLabel?.text)!
             let font = (statusLabel?.font)!
@@ -271,12 +271,12 @@ public class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    func prepare() {
+    private func prepare() {
         autoresizingMask = .FlexibleWidth
         backgroundColor = UIColor.clearColor()
     }
 
-    func beginRefreshing() {
+    private func beginRefreshing() {
         UIView.animateWithDuration(kCustomRefreshFastAnimationTime) {
             self.alpha = 1.0
         }

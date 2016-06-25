@@ -23,7 +23,7 @@ class UIViewControllerDemo: UIViewController {
 
         //self.tableView.tableFooterView = UIView()
         //self.tableView.showLoadingView = true
-        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock({
+        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock {
             let minseconds = 3 * Double(NSEC_PER_SEC)
             let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
             dispatch_after(dtime, dispatch_get_main_queue(), {
@@ -34,7 +34,7 @@ class UIViewControllerDemo: UIViewController {
                 self.tableView.reloadData()
 //                self.tableView.showLoadingView = false
             })
-        })
+        }
 
 //        let minseconds = 3 * Double(NSEC_PER_SEC)
 //        let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))

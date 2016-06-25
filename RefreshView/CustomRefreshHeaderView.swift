@@ -10,9 +10,9 @@ import UIKit
 
 public class CustomRefreshHeaderView: CustomRefreshView {
 
-    var customBackgroundColor = UIColor.clearColor()
-    var angle: CGFloat = 0
-    var circleLayer: CAShapeLayer?
+    private var customBackgroundColor = UIColor.clearColor()
+    private var circleLayer: CAShapeLayer?
+    private let angle: CGFloat = 0
 
     var state: RefreshState? {
         willSet {
@@ -37,7 +37,7 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         return imageView
     }()
 
-    func willSetRefreshState(newValue: RefreshState?) {
+    private func willSetRefreshState(newValue: RefreshState?) {
         if newValue == .Idle {
             if state != .Refreshing {
                 return
@@ -54,7 +54,7 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
-    func didSetRefreshState() {
+    private func didSetRefreshState() {
         if state == .Refreshing {
             UIView.animateWithDuration(kCustomRefreshFastAnimationTime, animations: {
                 let top = (self.scrollViewOriginalInset?.top)! + self.sizeHeight
@@ -211,14 +211,14 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
-    public class func headerWithRefreshingBlock(startLoading: () -> (), customBackgroundColor: UIColor = UIColor.clearColor()) -> CustomRefreshHeaderView {
+    public class func headerWithRefreshingBlock(customBackgroundColor: UIColor = UIColor.clearColor(), startLoading: () -> ()) -> CustomRefreshHeaderView {
         let header = self.init()
         header.start = startLoading
         header.customBackgroundColor = customBackgroundColor
         return header
     }
 
-    func startAnimation() {
+    private func startAnimation() {
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = -angle
         rotateAnimation.toValue = -angle + CGFloat(M_PI * 2.0)
@@ -255,7 +255,7 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         sizeHeight = kRefreshHeaderHeight
     }
 
-    func beginRefreshing() {
+    private func beginRefreshing() {
         UIView.animateWithDuration(kCustomRefreshFastAnimationTime) { () -> Void in
             self.alpha = 1.0
         }

@@ -31,7 +31,7 @@ class SecondViewController: UITableViewController {
             }
         })
 
-        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock({
+        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock(UIColor.whiteColor(), startLoading: {
             let minseconds = 3 * Double(NSEC_PER_SEC)
             let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
             dispatch_after(dtime, dispatch_get_main_queue(), {
@@ -43,7 +43,7 @@ class SecondViewController: UITableViewController {
                 self.tableView.refreshHeader?.endRefreshing()
                 self.tableView.refreshFooter?.showLoadingView = false
             })
-        }, customBackgroundColor: UIColor.whiteColor())
+        })
 
         self.tableView.refreshFooter = CustomRefreshFooterView.footerWithLoadingText("Loading More Data", startLoading: {
             let minseconds = 1 * Double(NSEC_PER_SEC)
