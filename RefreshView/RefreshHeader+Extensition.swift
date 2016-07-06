@@ -19,6 +19,7 @@ public extension UIScrollView {
                 newValue!.tag = kRefreshHeaderTag
                 self.refreshHeader?.removeFromSuperview()
                 self.insertSubview(newValue!, atIndex: 0)
+                self.bringSubviewToFront(newValue!)
                 objc_setAssociatedObject(self, kRefreshHeaderKey, newValue, .OBJC_ASSOCIATION_RETAIN)
                 self.didChangeValueForKey("header")
             }
@@ -36,6 +37,7 @@ public extension UIScrollView {
                 newValue!.tag = kRefreshFooterTag
                 self.refreshFooter?.removeFromSuperview()
                 self.insertSubview(newValue!, atIndex: 0)
+                self.bringSubviewToFront(newValue!)
                 objc_setAssociatedObject(self, kRefreshHeaderKey, newValue, .OBJC_ASSOCIATION_RETAIN)
                 self.didChangeValueForKey("footer")
             }
