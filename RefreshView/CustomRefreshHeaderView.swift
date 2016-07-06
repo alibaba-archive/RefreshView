@@ -223,6 +223,7 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         rotateAnimation.fromValue = -angle
         rotateAnimation.toValue = -angle + CGFloat(M_PI * 2.0)
         rotateAnimation.duration = 1
+        rotateAnimation.removedOnCompletion = false
         rotateAnimation.repeatCount = Float(CGFloat.max)
         circleImageView?.layer.addAnimation(rotateAnimation, forKey: kCustomRefreshAnimationKey)
     }

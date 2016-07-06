@@ -91,6 +91,7 @@ public class CustomRefreshLoadingView: UIView {
         rotateAnimation.toValue = CGFloat(M_PI * 2.0)
         rotateAnimation.duration = 1
         rotateAnimation.repeatCount = Float(CGFloat.max)
+        rotateAnimation.removedOnCompletion = false
         self.imageViewLoading.layer.addAnimation(rotateAnimation, forKey: "rotation")
     }
 
