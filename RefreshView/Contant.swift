@@ -13,8 +13,8 @@ let kRefreshHeaderKey = "header"
 let kRefreshFooterKey = "footer"
 let kRefreshLoadingKey = "loading"
 let kRefreshHeaderTag = 999
-let kRefreshFooterTag = 1000
-let kRefreshLoadingTag = 1001
+let kRefreshFooterTag = 9999
+let kRefreshLoadingTag = 99999
 
 let kCustomRefreshSlowAnimationTime = 0.4
 let kCustomRefreshFastAnimationTime = 0.25

@@ -38,7 +38,7 @@ public extension UIScrollView {
                 self.refreshFooter?.removeFromSuperview()
                 self.insertSubview(newValue!, atIndex: 0)
                 self.bringSubviewToFront(newValue!)
-                objc_setAssociatedObject(self, kRefreshHeaderKey, newValue, .OBJC_ASSOCIATION_RETAIN)
+                objc_setAssociatedObject(self, kRefreshFooterKey, newValue, .OBJC_ASSOCIATION_RETAIN)
                 self.didChangeValueForKey("footer")
             }
         }
