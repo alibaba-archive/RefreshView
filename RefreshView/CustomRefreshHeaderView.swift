@@ -159,6 +159,15 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         circleLayer?.lineCap = kCALineCapRound
     }
 
+    public func autoBeginRefreshing() {
+        if state == .Idle {
+            let offsetY = -scrollViewOriginalInset!.top - kRefreshNotCircleHeight + 14
+            self.scrollView?.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
+            state = .Pulling
+            beginRefreshing()
+        }
+    }
+
     private func scrollViewContentOffsetDidChange(change: [String : AnyObject]?) {
         if self.state == .Refreshing {
             if let _ = window {

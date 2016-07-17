@@ -13,12 +13,20 @@ import RefreshView
 class SecondViewController: UITableViewController {
 
     var content = [String]()
+
+
+    func beginRefresh() {
+        self.tableView.refreshHeader?.autoBeginRefreshing()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.tableFooterView = UIView()
         self.tableView.showLoadingView = true
         self.tableView.loadingView?.offsetY = 30
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .Done, target: self, action: #selector(beginRefresh))
 
         let minseconds = 2 * Double(NSEC_PER_SEC)
         let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))

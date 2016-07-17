@@ -14,6 +14,10 @@ class UIViewControllerDemo: UIViewController {
     var array = [String]()
     @IBOutlet var tableView: UITableView!
 
+    func beginRefresh() {
+        self.tableView.refreshHeader?.autoBeginRefreshing()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +27,9 @@ class UIViewControllerDemo: UIViewController {
 
         //self.tableView.tableFooterView = UIView()
         //self.tableView.showLoadingView = true
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .Done, target: self, action: #selector(beginRefresh))
+
         self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock {
             let minseconds = 3 * Double(NSEC_PER_SEC)
             let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))

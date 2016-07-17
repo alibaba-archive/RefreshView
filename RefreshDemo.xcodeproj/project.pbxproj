@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8690DA771D0E98650068E02F /* RefreshView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690DA761D0E98650068E02F /* RefreshView.framework */; };
-		8690DA781D0E98650068E02F /* RefreshView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8690DA761D0E98650068E02F /* RefreshView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		865AB6D91D3BC455008D1EC1 /* RefreshView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690DA761D0E98650068E02F /* RefreshView.framework */; };
+		865AB6DA1D3BC455008D1EC1 /* RefreshView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8690DA761D0E98650068E02F /* RefreshView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8697BC1D1CCE08C100E12544 /* UIViewControllerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697BC1C1CCE08C100E12544 /* UIViewControllerDemo.swift */; };
 		86ECCB2E1C97F535008A6D58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ECCB2D1C97F535008A6D58 /* AppDelegate.swift */; };
 		86ECCB331C97F535008A6D58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86ECCB311C97F535008A6D58 /* Main.storyboard */; };
@@ -18,13 +18,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8690DA791D0E98650068E02F /* Embed Frameworks */ = {
+		865AB6DB1D3BC455008D1EC1 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8690DA781D0E98650068E02F /* RefreshView.framework in Embed Frameworks */,
+				865AB6DA1D3BC455008D1EC1 /* RefreshView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8690DA771D0E98650068E02F /* RefreshView.framework in Frameworks */,
+				865AB6D91D3BC455008D1EC1 /* RefreshView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +97,7 @@
 				86ECCB271C97F535008A6D58 /* Frameworks */,
 				86ECCB281C97F535008A6D58 /* Resources */,
 				86ECCB4D1C98015A008A6D58 /* ShellScript */,
-				8690DA791D0E98650068E02F /* Embed Frameworks */,
+				865AB6DB1D3BC455008D1EC1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
