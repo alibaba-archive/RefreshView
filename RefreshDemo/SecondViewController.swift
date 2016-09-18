@@ -23,47 +23,47 @@ class SecondViewController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.tableFooterView = UIView()
-        self.tableView.showLoadingView = true
+        self.tableView.isShowLoadingView = true
         self.tableView.loadingView?.offsetY = 30
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .Done, target: self, action: #selector(beginRefresh))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(beginRefresh))
 
         let minseconds = 2 * Double(NSEC_PER_SEC)
-        let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
-        dispatch_after(dtime, dispatch_get_main_queue(), {
+        let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
             for i in 1...10 {
                 self.content.append(String(i))
                 self.tableView.reloadData()
-                self.tableView.showLoadingView = false
-                self.tableView.refreshFooter?.showLoadingView = true
+                self.tableView.isShowLoadingView = false
+                self.tableView.refreshFooter?.isShowLoadingView = true
             }
         })
 
-        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock(UIColor.whiteColor(), startLoading: {
+        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock(UIColor.white, startLoading: {
             let minseconds = 3 * Double(NSEC_PER_SEC)
-            let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
-            dispatch_after(dtime, dispatch_get_main_queue(), {
+            let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
                 let count = self.content.count
                 for i in count+1...count+5 {
                     self.content.append(String(i))
                     self.tableView.reloadData()
                 }
                 self.tableView.refreshHeader?.endRefreshing()
-                self.tableView.refreshFooter?.showLoadingView = false
+                self.tableView.refreshFooter?.isShowLoadingView = false
             })
         })
 
         self.tableView.refreshFooter = CustomRefreshFooterView.footerWithLoadingText("Loading More Data", startLoading: {
             let minseconds = 1 * Double(NSEC_PER_SEC)
-            let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
-            dispatch_after(dtime, dispatch_get_main_queue(), {
+            let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
                 let count = self.content.count
                 for i in count+1...count+5 {
                     self.content.append(String(i))
                     self.tableView.reloadData()
                 }
                 self.tableView.refreshFooter?.endRefreshing()
-                self.tableView.refreshFooter?.showLoadingView = count < 20
+                self.tableView.refreshFooter?.isShowLoadingView = count < 20
             })
         })
     }
@@ -79,19 +79,19 @@ class SecondViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.content.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BASIC", forIndexPath: indexPath)
-        cell.textLabel?.text = self.content[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BASIC", for: indexPath)
+        cell.textLabel?.text = self.content[(indexPath as NSIndexPath).row]
 
         return cell
     }

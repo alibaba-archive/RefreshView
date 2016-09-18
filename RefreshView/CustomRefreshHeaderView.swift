@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class CustomRefreshHeaderView: CustomRefreshView {
+open class CustomRefreshHeaderView: CustomRefreshView {
 
-    private var customBackgroundColor = UIColor.clearColor()
-    private var circleLayer: CAShapeLayer?
-    private let angle: CGFloat = 0
+    fileprivate var customBackgroundColor = UIColor.clear
+    fileprivate var circleLayer: CAShapeLayer?
+    fileprivate let angle: CGFloat = 0
 
     var state: RefreshState? {
         willSet {
@@ -24,87 +24,87 @@ public class CustomRefreshHeaderView: CustomRefreshView {
     }
 
     lazy var logoImageView: UIImageView? = {
-        let image = self.getImage("loading_logo")
+        let image = self.getImage(of: "loading_logo")
         let imageView = UIImageView(image: image)
         self.addSubview(imageView)
         return imageView
     }()
 
     lazy var circleImageView: UIImageView? = {
-        let image = self.getImage("loading_circle")
+        let image = self.getImage(of: "loading_circle")
         let imageView = UIImageView(image: image)
         self.addSubview(imageView)
         return imageView
     }()
 
-    private func willSetRefreshState(newValue: RefreshState?) {
-        if newValue == .Idle {
-            if state != .Refreshing {
+    fileprivate func willSetRefreshState(_ newValue: RefreshState?) {
+        if newValue == .idle {
+            if state != .refreshing {
                 return
             }
-            UIView.animateWithDuration(kCustomRefreshSlowAnimationTime, animations: {
+            UIView.animate(withDuration: kCustomRefreshSlowAnimationTime, animations: {
                 self.scrollView?.insetTop += self.insetTDelta
                 self.pullingPercent = 0.0
                 self.alpha = 0.0
                 }, completion: { (Bool) -> () in
-                    self.circleImageView?.layer.removeAnimationForKey(kCustomRefreshAnimationKey)
-                    self.circleImageView?.hidden = true
-                    self.circleLayer?.hidden = false
+                    self.circleImageView?.layer.removeAnimation(forKey: kCustomRefreshAnimationKey)
+                    self.circleImageView?.isHidden = true
+                    self.circleLayer?.isHidden = false
             })
         }
     }
 
-    private func didSetRefreshState() {
-        if state == .Refreshing {
-            UIView.animateWithDuration(kCustomRefreshFastAnimationTime, animations: {
+    fileprivate func didSetRefreshState() {
+        if state == .refreshing {
+            UIView.animate(withDuration: kCustomRefreshFastAnimationTime, animations: {
                 let top = (self.scrollViewOriginalInset?.top)! + self.sizeHeight
                 self.scrollView?.insetTop = top
                 self.scrollView?.offsetY = -top
                 }, completion: { (Bool) -> () in
-                    self.circleImageView?.hidden = false
-                    self.circleLayer?.hidden = true
+                    self.circleImageView?.isHidden = false
+                    self.circleLayer?.isHidden = true
                     self.startAnimation()
                     self.executeRefreshingCallback()
             })
         }
     }
 
-    private func getImage(name: String) -> UIImage {
+    fileprivate func getImage(of name: String) -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
-        let bundle = NSBundle(forClass: classForCoder)
-        let image = UIImage(named: name, inBundle: bundle, compatibleWithTraitCollection: traitCollection)
+        let bundle = Bundle(for: classForCoder)
+        let image = UIImage(named: name, in: bundle, compatibleWith: traitCollection)
         guard let newImage = image else {
             return UIImage()
         }
         return newImage
     }
 
-    private func initCircleLayer() {
+    fileprivate func initCircleLayer() {
         if circleLayer == nil {
             circleLayer = CAShapeLayer()
         }
         circleLayer?.shouldRasterize = false
-        circleLayer?.contentsScale = UIScreen.mainScreen().scale
+        circleLayer?.contentsScale = UIScreen.main.scale
         layer.addSublayer(circleLayer!)
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         prepare()
-        state = .Idle
+        state = .idle
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         placeSubviews()
     }
 
-    override public func willMoveToSuperview(newSuperview: UIView?) {
-        super.willMoveToSuperview(newSuperview)
+    override open func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
 
         if let newScrollView = newSuperview as? UIScrollView {
             removeObservers()
@@ -119,16 +119,16 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
-    override public func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override open func draw(_ rect: CGRect) {
+        super.draw(rect)
 
-        if state == .WillRefresh {
-            state = .Refreshing
+        if state == .willRefresh {
+            state = .refreshing
         }
     }
 
-    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if !userInteractionEnabled || hidden {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if !isUserInteractionEnabled || isHidden {
             return
         }
 
@@ -137,13 +137,13 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
-    private func executeRefreshingCallback() {
+    fileprivate func executeRefreshingCallback() {
         if let newStart = start {
             newStart()
         }
     }
 
-    private func changeCircleLayer(value: CGFloat) {
+    fileprivate func changeCircleLayer(to value: CGFloat) {
         let startAngle = kPai/2
         let endAngle = kPai/2+2*kPai*CGFloat(value)
         let ovalRect = CGRect(x: round(sizeWidth/2-6), y: 26, width: 12, height: 12)
@@ -152,29 +152,29 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         let point = CGPoint(x: x, y: y)
         let radius = ovalRect.width
         let ovalPath = UIBezierPath(arcCenter: point, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        circleLayer?.path = ovalPath.CGPath
-        circleLayer?.strokeColor = UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).CGColor
+        circleLayer?.path = ovalPath.cgPath
+        circleLayer?.strokeColor = UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
         circleLayer?.fillColor = nil
         circleLayer?.lineWidth = 2
         circleLayer?.lineCap = kCALineCapRound
     }
 
-    public func autoBeginRefreshing() {
-        if state == .Idle {
+    open func autoBeginRefreshing() {
+        if state == .idle {
             let offsetY = -scrollViewOriginalInset!.top - kRefreshNotCircleHeight + 14
             self.scrollView?.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
-            state = .Pulling
+            state = .pulling
             beginRefreshing()
         }
     }
 
-    private func scrollViewContentOffsetDidChange(change: [String : AnyObject]?) {
-        if self.state == .Refreshing {
+    fileprivate func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+        if state == .refreshing {
             if let _ = window {
-                var insetT = -scrollView!.offsetY > scrollViewOriginalInset?.top ? -scrollView!.offsetY : scrollViewOriginalInset?.top
-                insetT = insetT > sizeHeight + (scrollViewOriginalInset?.top)! ? sizeHeight + (scrollViewOriginalInset?.top)! : insetT
-                scrollView?.insetTop = insetT!
-                insetTDelta = scrollViewOriginalInset!.top - insetT!
+                var insetT = -scrollView!.offsetY > scrollViewOriginalInset!.top ? -scrollView!.offsetY : scrollViewOriginalInset!.top
+                insetT = insetT > sizeHeight + scrollViewOriginalInset!.top ? sizeHeight + scrollViewOriginalInset!.top : insetT
+                scrollView?.insetTop = insetT
+                insetTDelta = scrollViewOriginalInset!.top - insetT
                 return
             } else {
                 return
@@ -187,15 +187,15 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         let realOffsetY = happenOffsetY - offsetY - kRefreshNotCircleHeight
 
         if realOffsetY > 0 {
-            if state != .Pulling {
+            if state != .pulling {
                 let value = realOffsetY / (kRefreshHeaderHeight - 20)
                 if value < 1 {
-                    changeCircleLayer(value)
+                    changeCircleLayer(to: value)
                 } else {
-                    changeCircleLayer(1)
+                    changeCircleLayer(to: 1)
                 }
             } else {
-                changeCircleLayer(1)
+                changeCircleLayer(to: 1)
             }
         }
 
@@ -206,48 +206,48 @@ public class CustomRefreshHeaderView: CustomRefreshView {
         let currentPullingPercent = (happenOffsetY - offsetY) / (sizeHeight - 5)
         alpha = currentPullingPercent * 0.8
 
-        if scrollView!.dragging {
+        if scrollView!.isDragging {
             pullingPercent = currentPullingPercent
             if pullingPercent >= 1 {
-                state = .Pulling
+                state = .pulling
             } else {
-                state = .Idle
+                state = .idle
             }
-        } else if state == .Pulling {
+        } else if state == .pulling {
             beginRefreshing()
         } else if pullingPercent < 1 {
             pullingPercent = currentPullingPercent
         }
     }
 
-    public class func headerWithRefreshingBlock(customBackgroundColor: UIColor = UIColor.clearColor(), startLoading: () -> ()) -> CustomRefreshHeaderView {
+    open class func headerWithRefreshingBlock(_ customBackgroundColor: UIColor = UIColor.clear, startLoading: @escaping () -> ()) -> CustomRefreshHeaderView {
         let header = self.init()
         header.start = startLoading
         header.customBackgroundColor = customBackgroundColor
         return header
     }
 
-    private func startAnimation() {
+    fileprivate func startAnimation() {
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = -angle
         rotateAnimation.toValue = -angle + CGFloat(M_PI * 2.0)
         rotateAnimation.duration = 1
-        rotateAnimation.removedOnCompletion = false
-        rotateAnimation.repeatCount = Float(CGFloat.max)
-        circleImageView?.layer.addAnimation(rotateAnimation, forKey: kCustomRefreshAnimationKey)
+        rotateAnimation.isRemovedOnCompletion = false
+        rotateAnimation.repeatCount = Float(CGFloat.greatestFiniteMagnitude)
+        circleImageView?.layer.add(rotateAnimation, forKey: kCustomRefreshAnimationKey)
     }
 
-    private func addObservers() {
-        let options = NSKeyValueObservingOptions([.New, .Old])
+    fileprivate func addObservers() {
+        let options = NSKeyValueObservingOptions([.new, .old])
         scrollView?.addObserver(self, forKeyPath: kRefreshKeyPathContentOffset, options: options, context: nil)
     }
 
-    private func removeObservers() {
+    fileprivate func removeObservers() {
         superview?.removeObserver(self, forKeyPath: kRefreshKeyPathContentOffset)
     }
 
-    private func placeSubviews() {
-        if customBackgroundColor != UIColor.clearColor() {
+    fileprivate func placeSubviews() {
+        if customBackgroundColor != UIColor.clear {
             backgroundColor = customBackgroundColor
         } else {
             backgroundColor = scrollView?.backgroundColor
@@ -255,37 +255,37 @@ public class CustomRefreshHeaderView: CustomRefreshView {
 
         logoImageView?.center = CGPoint(x: sizeWidth/2, y: 32)
         circleImageView?.center = CGPoint(x: sizeWidth/2, y: 32)
-        circleImageView?.hidden = true
+        circleImageView?.isHidden = true
         initCircleLayer()
         originY = -sizeHeight
     }
 
-    private func prepare() {
-        autoresizingMask = .FlexibleWidth
+    fileprivate func prepare() {
+        autoresizingMask = .flexibleWidth
         sizeHeight = kRefreshHeaderHeight
     }
 
-    private func beginRefreshing() {
-        UIView.animateWithDuration(kCustomRefreshFastAnimationTime) { () -> Void in
+    fileprivate func beginRefreshing() {
+        UIView.animate(withDuration: kCustomRefreshFastAnimationTime, animations: { () -> Void in
             self.alpha = 1.0
-        }
+        })
 
         pullingPercent = 1.0
         if let _ = window {
-            state = .Refreshing
+            state = .refreshing
         } else {
-            if state != .Refreshing {
-                state = .Refreshing
+            if state != .refreshing {
+                state = .refreshing
                 setNeedsDisplay()
             }
         }
     }
 
-    public func endRefreshing() {
-        state = .Idle
+    open func endRefreshing() {
+        state = .idle
     }
 
     func isRefreshing() -> Bool {
-        return state == .Refreshing || state == .WillRefresh
+        return state == .refreshing || state == .willRefresh
     }
 }

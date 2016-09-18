@@ -8,29 +8,29 @@
 
 import UIKit
 
-public class CustomRefreshFooterView: CustomRefreshView {
+open class CustomRefreshFooterView: CustomRefreshView {
 
-    private var loadingText = LocalizedString(key: "Loading")
-    private var isAutomaticallyRefresh = true
-    private var triggerAutomaticallyRefreshPercent: CGFloat = 0.1
+    fileprivate var loadingText = LocalizedString(key: "Loading")
+    fileprivate var isAutomaticallyRefresh = true
+    fileprivate var triggerAutomaticallyRefreshPercent: CGFloat = 0.1
 
     var state: RefreshState? {
         didSet {
-            if state == .Refreshing {
+            if state == .refreshing {
                 startAnimation()
                 executeRefreshingCallback()
-            } else if state == .Idle {
+            } else if state == .idle {
                 if cellsCount() != 0 {
-                    circleImageView?.layer.removeAnimationForKey(kCustomRefreshAnimationKey)
+                    circleImageView?.layer.removeAnimation(forKey: kCustomRefreshAnimationKey)
                 }
             }
         }
     }
 
-    public var showLoadingView = true {
+    open var isShowLoadingView = true {
         didSet {
-            if oldValue != showLoadingView {
-                if !showLoadingView {
+            if oldValue != isShowLoadingView {
+                if !isShowLoadingView {
                     showFooterView(false)
                 } else {
                     if self.cellsCount() != 0 {
@@ -40,76 +40,76 @@ public class CustomRefreshFooterView: CustomRefreshView {
                     }
                 }
             } else {
-                showFooterView(showLoadingView)
+                showFooterView(isShowLoadingView)
             }
         }
     }
 
     lazy var logoImageView: UIImageView? = {
-        let image = self.getImage("loading_logo")
+        let image = self.getImage(of: "loading_logo")
         let imageView = UIImageView(image: image)
-        imageView.hidden = true
+        imageView.isHidden = true
         self.addSubview(imageView)
         return imageView
     }()
 
     lazy var circleImageView: UIImageView? = {
-        let image = self.getImage("loading_circle")
+        let image = self.getImage(of: "loading_circle")
         let imageView = UIImageView(image: image)
-        imageView.hidden = true
+        imageView.isHidden = true
         self.addSubview(imageView)
         return imageView
     }()
 
     lazy var statusLabel: UILabel? = {
         let statusLabel = UILabel()
-        statusLabel.font = statusLabel.font.fontWithSize(15)
+        statusLabel.font = statusLabel.font.withSize(15)
         statusLabel.text = self.loadingText
         statusLabel.textColor = kCustomRefreshFooterStatusColor
-        statusLabel.hidden = true
+        statusLabel.isHidden = true
         self.addSubview(statusLabel)
         return statusLabel
     }()
 
-    func getImage(name: String) -> UIImage {
+    func getImage(of name: String) -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
-        let bundle = NSBundle(forClass: classForCoder)
-        let image = UIImage(named: name, inBundle: bundle, compatibleWithTraitCollection: traitCollection)
+        let bundle = Bundle(for: classForCoder)
+        let image = UIImage(named: name, in: bundle, compatibleWith: traitCollection)
         guard let newImage = image else {
             return UIImage()
         }
         return newImage
     }
 
-    private func cellsCount() -> Int {
+    fileprivate func cellsCount() -> Int {
         var count = 0
         if let tableView = self.scrollView as? UITableView {
             let sections = tableView.numberOfSections
             for section in 0..<sections {
-                count += tableView.numberOfRowsInSection(section)
+                count += tableView.numberOfRows(inSection: section)
             }
         } else if let collectionView = self.scrollView as? UICollectionView {
-            let sections = collectionView.numberOfSections()
+            let sections = collectionView.numberOfSections
             for section in 0..<sections {
-                count += collectionView.numberOfItemsInSection(section)
+                count += collectionView.numberOfItems(inSection: section)
             }
         }
         return count
     }
 
-    private func showFooterView(show: Bool) {
+    fileprivate func showFooterView(_ show: Bool) {
         hideFooterView(true)
         updateInsetBottom(show)
-        userInteractionEnabled = show
+        isUserInteractionEnabled = show
     }
 
-    private func hideFooterView(flag: Bool) {
-        logoImageView?.hidden = flag
-        circleImageView?.hidden = flag
-        statusLabel?.hidden = flag
+    fileprivate func hideFooterView(_ flag: Bool) {
+        logoImageView?.isHidden = flag
+        circleImageView?.isHidden = flag
+        statusLabel?.isHidden = flag
     }
 
-    private func updateInsetBottom(show: Bool) {
+    fileprivate func updateInsetBottom(_ show: Bool) {
         if !show {
             scrollView?.insetBottom = 0
             sizeHeight = 0
@@ -122,20 +122,20 @@ public class CustomRefreshFooterView: CustomRefreshView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         prepare()
-        state = .Idle
+        state = .idle
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         placeSubviews()
     }
 
-    override public func willMoveToSuperview(newSuperview: UIView?) {
-        super.willMoveToSuperview(newSuperview)
+    override open func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
 
         if let newScrollView = newSuperview as? UIScrollView {
             removeObservers()
@@ -149,16 +149,16 @@ public class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    override public func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override open func draw(_ rect: CGRect) {
+        super.draw(rect)
 
-        if state == .WillRefresh {
-            state = .Refreshing
+        if state == .willRefresh {
+            state = .refreshing
         }
     }
 
-    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if !userInteractionEnabled {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if !isUserInteractionEnabled {
             return
         }
 
@@ -173,42 +173,41 @@ public class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    private func executeRefreshingCallback() {
+    fileprivate func executeRefreshingCallback() {
         if let start = start {
             start()
         }
     }
 
-    private func scrollViewContentOffsetDidChange(change: [String : AnyObject]?) {
-        if state != .Idle || !isAutomaticallyRefresh || originY == 0 || cellsCount() == 0 || !showLoadingView {
+    fileprivate func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+        if state != .idle || !isAutomaticallyRefresh || originY == 0 || cellsCount() == 0 || !isShowLoadingView {
             return
         }
 
         if scrollView!.insetTop + scrollView!.contentHeight > scrollView!.sizeHeight {
             let offsetY = scrollView!.contentHeight - scrollView!.sizeHeight + sizeHeight * triggerAutomaticallyRefreshPercent + scrollView!.insetBottom - sizeHeight
+
             if scrollView!.offsetY >= offsetY {
-                if let old = change!["old"]!.CGPointValue {
-                    if let new = change!["new"]!.CGPointValue {
-                        if new.y < old.y {
-                            return
-                        }
-                        beginRefreshing()
+                if let newValue = change?[.newKey] as? CGPoint, let oldValue = change?[.oldKey] as? CGPoint {
+                    if newValue.y < oldValue.y {
+                        return
                     }
+                    beginRefreshing()
                 }
             }
         }
     }
 
-    private func scrollViewContentSizeDidChange(change: [String : AnyObject]?) {
+    fileprivate func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         originY = scrollView!.contentHeight
     }
 
-    private func scrollViewPanStateDidChange(chnage: [String : AnyObject]?) {
-        if state != .Idle || cellsCount() == 0 || !showLoadingView {
+    fileprivate func scrollViewPanStateDidChange(_ chnage: [NSKeyValueChangeKey : Any]?) {
+        if state != .idle || cellsCount() == 0 || !isShowLoadingView {
             return
         }
 
-        if scrollView?.panGestureRecognizer.state == UIGestureRecognizerState.Ended {
+        if scrollView?.panGestureRecognizer.state == UIGestureRecognizerState.ended {
             if scrollView!.insetTop + scrollView!.contentHeight <= scrollView!.sizeHeight {
                 if scrollView!.offsetY >= -scrollView!.insetTop {
                     beginRefreshing()
@@ -221,49 +220,49 @@ public class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    public class func footerWithLoadingText(loadingText: String, startLoading: () -> ()) -> CustomRefreshFooterView {
+    open class func footerWithLoadingText(_ loadingText: String, startLoading: @escaping () -> ()) -> CustomRefreshFooterView {
         let footer = footerWithRefreshingBlock(startLoading)
         footer.loadingText = loadingText
         return footer
     }
 
-    public class func footerWithRefreshingBlock(startLoading: () -> ()) -> CustomRefreshFooterView {
+    open class func footerWithRefreshingBlock(_ startLoading: @escaping () -> ()) -> CustomRefreshFooterView {
         let footer = self.init()
         footer.start = startLoading
         return footer
     }
 
-    private func startAnimation() {
+    fileprivate func startAnimation() {
         placeSubviews()
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
         rotateAnimation.toValue = CGFloat(M_PI * 2.0)
         rotateAnimation.duration = 1
-        rotateAnimation.repeatCount = Float(CGFloat.max)
-        rotateAnimation.removedOnCompletion = false
-        circleImageView?.layer.addAnimation(rotateAnimation, forKey: kCustomRefreshAnimationKey)
+        rotateAnimation.repeatCount = Float(CGFloat.greatestFiniteMagnitude)
+        rotateAnimation.isRemovedOnCompletion = false
+        circleImageView?.layer.add(rotateAnimation, forKey: kCustomRefreshAnimationKey)
     }
 
-    private func addObservers() {
-        let options = NSKeyValueObservingOptions([.New, .Old])
-        scrollView?.addObserver(self, forKeyPath: kRefreshKeyPathContentOffset, options: NSKeyValueObservingOptions([.New, .Old]), context: nil)
+    fileprivate func addObservers() {
+        let options = NSKeyValueObservingOptions([.new, .old])
+        scrollView?.addObserver(self, forKeyPath: kRefreshKeyPathContentOffset, options: NSKeyValueObservingOptions([.new, .old]), context: nil)
         scrollView?.addObserver(self, forKeyPath: kRefreshKeyPathContentSize, options: options, context: nil)
         pan = scrollView?.panGestureRecognizer
         pan?.addObserver(self, forKeyPath: kRefreshKeyPathPanState, options: options, context: nil)
     }
 
-    private func removeObservers() {
+    fileprivate func removeObservers() {
         superview?.removeObserver(self, forKeyPath: kRefreshKeyPathContentOffset)
         superview?.removeObserver(self, forKeyPath: kRefreshKeyPathContentSize)
         pan?.removeObserver(self, forKeyPath: kRefreshKeyPathPanState)
         pan = nil
     }
 
-    private func placeSubviews() {
+    fileprivate func placeSubviews() {
         if cellsCount() != 0 {
             let text = (statusLabel?.text)!
             let font = (statusLabel?.font)!
-            let statusLabelWidth: CGFloat =  ceil(text.sizeWithAttributes([NSFontAttributeName:font]).width)
+            let statusLabelWidth: CGFloat =  ceil(text.size(attributes: [NSFontAttributeName:font]).width)
             let originX = (sizeWidth - statusLabelWidth - (circleImageView?.sizeWidth)! - kCustomRefreshFooterMargin) / 2.0
             logoImageView?.center = CGPoint(x: originX+13, y: 20)
             circleImageView?.center = CGPoint(x: originX+13, y: 20)
@@ -272,30 +271,30 @@ public class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    private func prepare() {
-        autoresizingMask = .FlexibleWidth
-        backgroundColor = UIColor.clearColor()
+    fileprivate func prepare() {
+        autoresizingMask = .flexibleWidth
+        backgroundColor = UIColor.clear
     }
 
-    private func beginRefreshing() {
-        UIView.animateWithDuration(kCustomRefreshFastAnimationTime) {
+    fileprivate func beginRefreshing() {
+        UIView.animate(withDuration: kCustomRefreshFastAnimationTime, animations: {
             self.alpha = 1.0
-        }
+        })
 
         hideFooterView(false)
         pullingPercent = 1.0
 
         if let _ = window {
-            state = .Refreshing
+            state = .refreshing
         } else {
-            if state != .Refreshing {
-                state = .WillRefresh
+            if state != .refreshing {
+                state = .willRefresh
                 setNeedsDisplay()
             }
         }
     }
 
-    public func endRefreshing() {
-        state = .Idle
+    open func endRefreshing() {
+        state = .idle
     }
 }

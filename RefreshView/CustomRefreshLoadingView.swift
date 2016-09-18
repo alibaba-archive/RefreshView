@@ -8,25 +8,25 @@
 
 import UIKit
 
-public class CustomRefreshLoadingView: UIView {
-    private var scrollView: UIScrollView?
-    private var imageViewLogo: UIImageView!
-    private var imageViewLoading: UIImageView!
+open class CustomRefreshLoadingView: UIView {
+    fileprivate var scrollView: UIScrollView?
+    fileprivate var imageViewLogo: UIImageView!
+    fileprivate var imageViewLoading: UIImageView!
 
-    public var offsetX: CGFloat?
-    public var offsetY: CGFloat?
-    private let loadingWidth: CGFloat = 26.0
+    open var offsetX: CGFloat?
+    open var offsetY: CGFloat?
+    fileprivate let loadingWidth: CGFloat = 26.0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         prepare()
     }
 
-    private func prepare() {
-        autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    fileprivate func prepare() {
+        autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
 
-    private func placeSubviews() {
+    fileprivate func placeSubviews() {
         var originX: CGFloat = 0
         var originY: CGFloat = 0
         if let offsetX = offsetX {
@@ -47,8 +47,8 @@ public class CustomRefreshLoadingView: UIView {
         super.init(coder: aDecoder)
     }
 
-    override public func willMoveToSuperview(newSuperview: UIView?) {
-        super.willMoveToSuperview(newSuperview)
+    override open func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
 
         if let newScrollView = newSuperview as? UIScrollView {
             scrollView = newScrollView
@@ -60,49 +60,49 @@ public class CustomRefreshLoadingView: UIView {
         }
     }
 
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         placeSubviews()
     }
 
-    private func commonInit() {
+    fileprivate func commonInit() {
         self.imageViewLogo = UIImageView()
         self.imageViewLoading = UIImageView()
-        self.imageViewLogo.image = getImage("loading_logo")
-        self.imageViewLoading.image = getImage("loading_circle")
-        self.imageViewLogo.backgroundColor = UIColor.clearColor()
-        self.imageViewLoading.backgroundColor = UIColor.clearColor()
+        self.imageViewLogo.image = getImage(of: "loading_logo")
+        self.imageViewLoading.image = getImage(of: "loading_circle")
+        self.imageViewLogo.backgroundColor = UIColor.clear
+        self.imageViewLoading.backgroundColor = UIColor.clear
         self.addSubview(self.imageViewLogo)
         self.addSubview(self.imageViewLoading)
         self.placeSubviews()
     }
 
-    private func getImage(name: String) -> UIImage {
+    fileprivate func getImage(of name: String) -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
-        let bundle = NSBundle(forClass: self.classForCoder)
-        guard let image = UIImage(named: name, inBundle: bundle, compatibleWithTraitCollection: traitCollection) else { return UIImage() }
+        let bundle = Bundle(for: self.classForCoder)
+        guard let image = UIImage(named: name, in: bundle, compatibleWith: traitCollection) else { return UIImage() }
 
         return image
     }
 
-    public func startAnimation() {
+    open func startAnimation() {
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
         rotateAnimation.toValue = CGFloat(M_PI * 2.0)
         rotateAnimation.duration = 1
-        rotateAnimation.repeatCount = Float(CGFloat.max)
-        rotateAnimation.removedOnCompletion = false
-        self.imageViewLoading.layer.addAnimation(rotateAnimation, forKey: "rotation")
+        rotateAnimation.repeatCount = Float(CGFloat.greatestFiniteMagnitude)
+        rotateAnimation.isRemovedOnCompletion = false
+        self.imageViewLoading.layer.add(rotateAnimation, forKey: "rotation")
     }
 
-    public func stopAnimation() {
-        UIView.animateWithDuration(0.5, animations: {
+    open func stopAnimation() {
+        UIView.animate(withDuration: 0.5, animations: {
             self.alpha = 0
             self.scrollView?.bounces = true
-        }) { (competition) -> Void in
-            self.imageViewLoading.layer.removeAnimationForKey("rotation")
+        }, completion: { (competition) -> Void in
+            self.imageViewLoading.layer.removeAnimation(forKey: "rotation")
             self.removeFromSuperview()
             self.alpha = 1
-        }
+        })
     }
 }
