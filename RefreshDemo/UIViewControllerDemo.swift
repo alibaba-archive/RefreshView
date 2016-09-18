@@ -26,20 +26,20 @@ class UIViewControllerDemo: UIViewController {
 //        }
 
         //self.tableView.tableFooterView = UIView()
-        //self.tableView.showLoadingView = true
+        //self.tableView.isShowLoadingView = true
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .Done, target: self, action: #selector(beginRefresh))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(beginRefresh))
 
         self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock {
             let minseconds = 3 * Double(NSEC_PER_SEC)
-            let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
-            dispatch_after(dtime, dispatch_get_main_queue(), {
+            let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
                 for i in 0...20 {
                     self.array.append(String(i))
                 }
                 self.tableView.refreshHeader?.endRefreshing()
                 self.tableView.reloadData()
-//                self.tableView.showLoadingView = false
+//                self.tableView.isShowLoadingView = false
             })
         }
 
@@ -49,21 +49,21 @@ class UIViewControllerDemo: UIViewController {
 //            for i in 0...5 {
 //                self.array.append(String(i))
 //            }
-//            self.tableView.showLoadingView = false
+//            self.tableView.isShowLoadingView = false
 //            self.tableView.reloadData()
 //        })
 
         self.tableView.refreshFooter = CustomRefreshFooterView.footerWithRefreshingBlock({
             let minseconds = 1 * Double(NSEC_PER_SEC)
-            let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
-            dispatch_after(dtime, dispatch_get_main_queue(), {
+            let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
                 let count = self.array.count
                 for i in count+1...count+5 {
                     self.array.append(String(i))
                     self.tableView.reloadData()
                 }
                 self.tableView.refreshFooter?.endRefreshing()
-                self.tableView.refreshFooter?.showLoadingView = (self.array.count < 25)
+                self.tableView.refreshFooter?.isShowLoadingView = (self.array.count < 25)
             })
         })
         // Do any additional setup after loading the view.
@@ -76,14 +76,14 @@ class UIViewControllerDemo: UIViewController {
 }
 
 extension UIViewControllerDemo: UITableViewDelegate, UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("CELL")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "CELL")
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "CELL")
         }
         cell?.textLabel?.text = "CELL"
         return cell!

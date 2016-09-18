@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class CustomRefreshView: UIView {
+open class CustomRefreshView: UIView {
 
     var pan: UIPanGestureRecognizer?
     var scrollView: UIScrollView?
-    var pullingPercent: CGFloat?
+    var pullingPercent: CGFloat = 0
     var start: (() -> ())?
     var insetTDelta: CGFloat = 0
     var scrollViewOriginalInset: UIEdgeInsets?

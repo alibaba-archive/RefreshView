@@ -36,19 +36,19 @@ let kRefreshFastAnimationDuration = 0.25
 struct TableViewSelectors {
     static let reloadData = #selector(UITableView.reloadData)
     static let endUpdates = #selector(UITableView.endUpdates)
-    static let numberOfSections = #selector(UITableViewDataSource.numberOfSectionsInTableView(_:))
+    static let numberOfSections = #selector(UITableViewDataSource.numberOfSections(`in`:))
 }
 
 struct CollectionViewSelectors {
     static let reloadData = #selector(UICollectionView.reloadData)
-    static let numberOfSections = #selector(UICollectionViewDataSource.numberOfSectionsInCollectionView(_:))
+    static let numberOfSections = #selector(UICollectionViewDataSource.numberOfSections(`in`:))
 }
 
 
 public enum RefreshState: String {
-    case Idle = "Idle"
-    case Pulling = "Pulling"
-    case Refreshing = "Refreshing"
-    case WillRefresh = "WillRefresh"
-    case NoMoreData = "NoMoreData"
+    case idle = "Idle"
+    case pulling = "Pulling"
+    case refreshing = "Refreshing"
+    case willRefresh = "WillRefresh"
+    case noMoreData = "NoMoreData"
 }
