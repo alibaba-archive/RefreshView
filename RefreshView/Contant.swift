@@ -36,12 +36,12 @@ let kRefreshFastAnimationDuration = 0.25
 struct TableViewSelectors {
     static let reloadData = #selector(UITableView.reloadData)
     static let endUpdates = #selector(UITableView.endUpdates)
-    static let numberOfSections = #selector(UITableViewDataSource.numberOfSections(`in`:))
+    static let numberOfSections = #selector(UITableViewDataSource.numberOfSections(in:))
 }
 
 struct CollectionViewSelectors {
     static let reloadData = #selector(UICollectionView.reloadData)
-    static let numberOfSections = #selector(UICollectionViewDataSource.numberOfSections(`in`:))
+    static let numberOfSections = #selector(UICollectionViewDataSource.numberOfSections(in:))
 }
 
 
