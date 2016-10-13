@@ -188,8 +188,8 @@ open class CustomRefreshFooterView: CustomRefreshView {
             let offsetY = scrollView!.contentHeight - scrollView!.sizeHeight + sizeHeight * triggerAutomaticallyRefreshPercent + scrollView!.insetBottom - sizeHeight
 
             if scrollView!.offsetY >= offsetY {
-                if let newValue = change?[.newKey] as? CGPoint, let oldValue = change?[.oldKey] as? CGPoint {
-                    if newValue.y < oldValue.y {
+                if let newValue = change?[.newKey] as? NSValue, let oldValue = change?[.oldKey] as? NSValue {
+                    if newValue.cgPointValue.y < oldValue.cgPointValue.y {
                         return
                     }
                     beginRefreshing()
