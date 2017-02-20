@@ -15,13 +15,10 @@ public extension UIScrollView {
         }
         set(newValue) {
             if newValue != self.refreshHeader {
-                self.willChangeValue(forKey: "header")
                 newValue!.tag = kRefreshHeaderTag
                 self.refreshHeader?.removeFromSuperview()
                 self.insertSubview(newValue!, at: 0)
                 self.bringSubview(toFront: newValue!)
-                objc_setAssociatedObject(self, kRefreshHeaderKey, newValue, .OBJC_ASSOCIATION_RETAIN)
-                self.didChangeValue(forKey: "header")
             }
         }
     }
@@ -33,13 +30,10 @@ public extension UIScrollView {
         }
         set(newValue) {
             if newValue != self.refreshFooter {
-                self.willChangeValue(forKey: "footer")
                 newValue!.tag = kRefreshFooterTag
                 self.refreshFooter?.removeFromSuperview()
                 self.insertSubview(newValue!, at: 0)
                 self.bringSubview(toFront: newValue!)
-                objc_setAssociatedObject(self, kRefreshFooterKey, newValue, .OBJC_ASSOCIATION_RETAIN)
-                self.didChangeValue(forKey: "footer")
             }
         }
     }
@@ -54,14 +48,11 @@ public extension UIScrollView {
         }
         set(newValue) {
             if newValue {
-                self.willChangeValue(forKey: "loading")
                 let loadingView = CustomRefreshLoadingView()
                 loadingView.tag = kRefreshLoadingTag
 
                 self.addSubview(loadingView)
                 loadingView.startAnimation()
-                objc_setAssociatedObject(self, kRefreshLoadingKey, newValue, .OBJC_ASSOCIATION_RETAIN)
-                self.didChangeValue(forKey: "loading")
             } else {
                 let loadingView = self.viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
                 loadingView?.stopAnimation()

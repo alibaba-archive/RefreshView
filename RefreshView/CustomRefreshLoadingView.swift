@@ -9,7 +9,7 @@
 import UIKit
 
 open class CustomRefreshLoadingView: UIView {
-    fileprivate var scrollView: UIScrollView?
+    fileprivate weak var scrollView: UIScrollView?
     fileprivate var imageViewLogo: UIImageView!
     fileprivate var imageViewLoading: UIImageView!
 

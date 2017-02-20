@@ -117,6 +117,10 @@ open class CustomRefreshHeaderView: CustomRefreshView {
 
             addObservers()
         }
+        
+        if newSuperview == nil {
+            removeObservers()
+        }
     }
 
     override open func draw(_ rect: CGRect) {

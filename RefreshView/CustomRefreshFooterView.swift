@@ -128,7 +128,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     override open func layoutSubviews() {
         super.layoutSubviews()
         placeSubviews()
@@ -146,6 +146,10 @@ open class CustomRefreshFooterView: CustomRefreshView {
 
             scrollView?.insetBottom += kRefreshFooterHeight
             originY = scrollView!.contentHeight
+        }
+        
+        if newSuperview == nil {
+            removeObservers()
         }
     }
 
