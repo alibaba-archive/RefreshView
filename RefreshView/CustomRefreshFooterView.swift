@@ -128,7 +128,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override open func layoutSubviews() {
         super.layoutSubviews()
         placeSubviews()
@@ -147,7 +147,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
             scrollView?.insetBottom += kRefreshFooterHeight
             originY = scrollView!.contentHeight
         }
-        
+
         if newSuperview == nil {
             removeObservers()
         }
@@ -224,13 +224,13 @@ open class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    open class func footerWithLoadingText(_ loadingText: String, startLoading: @escaping () -> ()) -> CustomRefreshFooterView {
+    open class func footerWithLoadingText(_ loadingText: String, startLoading: @escaping () -> Void) -> CustomRefreshFooterView {
         let footer = footerWithRefreshingBlock(startLoading)
         footer.loadingText = loadingText
         return footer
     }
 
-    open class func footerWithRefreshingBlock(_ startLoading: @escaping () -> ()) -> CustomRefreshFooterView {
+    open class func footerWithRefreshingBlock(_ startLoading: @escaping () -> Void) -> CustomRefreshFooterView {
         let footer = self.init()
         footer.start = startLoading
         return footer
@@ -266,7 +266,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
         if cellsCount() != 0 {
             let text = (statusLabel?.text)!
             let font = (statusLabel?.font)!
-            let statusLabelWidth: CGFloat =  ceil(text.size(attributes: [NSFontAttributeName:font]).width)
+            let statusLabelWidth: CGFloat =  ceil(text.size(attributes: [NSFontAttributeName: font]).width)
             let originX = (sizeWidth - statusLabelWidth - (circleImageView?.sizeWidth)! - kCustomRefreshFooterMargin) / 2.0
             logoImageView?.center = CGPoint(x: originX+13, y: 20)
             circleImageView?.center = CGPoint(x: originX+13, y: 20)

@@ -46,7 +46,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
                 self.scrollView?.insetTop += self.insetTDelta
                 self.pullingPercent = 0.0
                 self.alpha = 0.0
-                }, completion: { (Bool) -> () in
+                }, completion: { (_) -> Void in
                     self.circleImageView?.layer.removeAnimation(forKey: kCustomRefreshAnimationKey)
                     self.circleImageView?.isHidden = true
                     self.circleLayer?.isHidden = false
@@ -60,7 +60,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
                 let top = (self.scrollViewOriginalInset?.top)! + self.sizeHeight
                 self.scrollView?.insetTop = top
                 self.scrollView?.offsetY = -top
-                }, completion: { (Bool) -> () in
+                }, completion: { (_) -> Void in
                     self.circleImageView?.isHidden = false
                     self.circleLayer?.isHidden = true
                     self.startAnimation()
@@ -117,7 +117,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
 
             addObservers()
         }
-        
+
         if newSuperview == nil {
             removeObservers()
         }
@@ -224,7 +224,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
-    open class func headerWithRefreshingBlock(_ customBackgroundColor: UIColor = UIColor.clear, startLoading: @escaping () -> ()) -> CustomRefreshHeaderView {
+    open class func headerWithRefreshingBlock(_ customBackgroundColor: UIColor = UIColor.clear, startLoading: @escaping () -> Void) -> CustomRefreshHeaderView {
         let header = self.init()
         header.start = startLoading
         header.customBackgroundColor = customBackgroundColor

@@ -99,7 +99,7 @@ open class CustomRefreshLoadingView: UIView {
         UIView.animate(withDuration: 0.5, animations: {
             self.alpha = 0
             self.scrollView?.bounces = true
-        }, completion: { (competition) -> Void in
+        }, completion: { (_) -> Void in
             self.imageViewLoading.layer.removeAnimation(forKey: "rotation")
             self.removeFromSuperview()
             self.alpha = 1

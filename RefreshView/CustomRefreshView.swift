@@ -13,7 +13,7 @@ open class CustomRefreshView: UIView {
     var pan: UIPanGestureRecognizer?
     weak var scrollView: UIScrollView?
     var pullingPercent: CGFloat = 0
-    var start: (() -> ())?
+    var start: (() -> Void)?
     var insetTDelta: CGFloat = 0
     var scrollViewOriginalInset: UIEdgeInsets?
     var originInset: UIEdgeInsets?

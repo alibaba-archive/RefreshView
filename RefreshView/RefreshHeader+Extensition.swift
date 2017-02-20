@@ -62,8 +62,6 @@ public extension UIScrollView {
     }
 
     var loadingView: CustomRefreshLoadingView? {
-        get {
-            return self.viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
-        }
+        return self.viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
     }
 }

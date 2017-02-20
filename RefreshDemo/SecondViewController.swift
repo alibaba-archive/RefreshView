@@ -9,11 +9,9 @@
 import UIKit
 import RefreshView
 
-
 class SecondViewController: UITableViewController {
 
     var content = [String]()
-
 
     func beginRefresh() {
         self.tableView.refreshHeader?.autoBeginRefreshing()

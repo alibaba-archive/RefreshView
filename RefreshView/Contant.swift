@@ -44,7 +44,6 @@ struct CollectionViewSelectors {
     static let numberOfSections = #selector(UICollectionViewDataSource.numberOfSections(in:))
 }
 
-
 public enum RefreshState: String {
     case idle = "Idle"
     case pulling = "Pulling"
