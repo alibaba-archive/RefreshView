@@ -14,7 +14,9 @@ public extension UIScrollView {
             return self.viewWithTag(kRefreshHeaderTag) as? CustomRefreshHeaderView
         }
         set(newValue) {
-            if newValue != self.refreshHeader {
+            if newValue == nil {
+                self.refreshHeader?.removeFromSuperview()
+            } else if newValue != self.refreshHeader {
                 newValue!.tag = kRefreshHeaderTag
                 self.refreshHeader?.removeFromSuperview()
                 self.insertSubview(newValue!, at: 0)
@@ -29,7 +31,9 @@ public extension UIScrollView {
             return view
         }
         set(newValue) {
-            if newValue != self.refreshFooter {
+            if newValue == nil {
+                self.refreshFooter?.removeFromSuperview()
+            } else if newValue != self.refreshFooter {
                 newValue!.tag = kRefreshFooterTag
                 self.refreshFooter?.removeFromSuperview()
                 self.insertSubview(newValue!, at: 0)

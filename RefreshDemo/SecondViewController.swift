@@ -48,6 +48,7 @@ class SecondViewController: UITableViewController {
                 }
                 self.tableView.refreshHeader?.endRefreshing()
                 self.tableView.refreshFooter?.isShowLoadingView = false
+                self.tableView.refreshHeader = nil
             })
         })
 
