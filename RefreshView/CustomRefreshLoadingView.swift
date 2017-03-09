@@ -12,6 +12,8 @@ open class CustomRefreshLoadingView: UIView {
     fileprivate weak var scrollView: UIScrollView?
     fileprivate var imageViewLogo: UIImageView!
     fileprivate var imageViewLoading: UIImageView!
+    fileprivate var loadingImage: UIImage?
+    fileprivate var logoImage: UIImage?
 
     open var offsetX: CGFloat?
     open var offsetY: CGFloat?
@@ -66,10 +68,11 @@ open class CustomRefreshLoadingView: UIView {
     }
 
     fileprivate func commonInit() {
+        UIImageView.appearance(for: UITraitCollection(displayScale: 3))
         self.imageViewLogo = UIImageView()
         self.imageViewLoading = UIImageView()
-        self.imageViewLogo.image = getImage(of: "loading_logo")
-        self.imageViewLoading.image = getImage(of: "loading_circle")
+        self.imageViewLogo.image = chooseLogoImage()
+        self.imageViewLoading.image = chooseLoadingImage()
         self.imageViewLogo.backgroundColor = UIColor.clear
         self.imageViewLoading.backgroundColor = UIColor.clear
         self.addSubview(self.imageViewLogo)
@@ -83,6 +86,32 @@ open class CustomRefreshLoadingView: UIView {
         guard let image = UIImage(named: name, in: bundle, compatibleWith: traitCollection) else { return UIImage() }
 
         return image
+    }
+    
+    fileprivate func chooseLogoImage() -> UIImage {
+        let traitCollection = UITraitCollection(displayScale: 3)
+        guard let customImageLogo = logoImage else {
+            let bundle = Bundle(for: classForCoder)
+            let image = UIImage(named: "loading_logo", in: bundle, compatibleWith: traitCollection)
+            guard let newImage = image else {
+                return UIImage()
+            }
+            return newImage
+        }
+        return customImageLogo
+    }
+    
+    fileprivate func chooseLoadingImage() -> UIImage {
+        let traitCollection = UITraitCollection(displayScale: 3)
+        guard let customLoadingImage = loadingImage else {
+            let bundle = Bundle(for: classForCoder)
+            let image = UIImage(named: "loading_circle", in: bundle, compatibleWith: traitCollection)
+            guard let newImage = image else {
+                return UIImage()
+            }
+            return newImage
+        }
+        return customLoadingImage
     }
 
     open func startAnimation() {
@@ -104,5 +133,12 @@ open class CustomRefreshLoadingView: UIView {
             self.removeFromSuperview()
             self.alpha = 1
         })
+    }
+    
+    open func customLoadingViewWith(_ customLogoImage: UIImage? = nil, customLoadingImage: UIImage? = nil) {
+        logoImage = customLogoImage
+        loadingImage = customLoadingImage
+        imageViewLogo.image = chooseLogoImage()
+        imageViewLoading.image = chooseLoadingImage()
     }
 }

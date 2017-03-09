@@ -17,7 +17,8 @@ open class CustomRefreshView: UIView {
     var insetTDelta: CGFloat = 0
     var scrollViewOriginalInset: UIEdgeInsets?
     var originInset: UIEdgeInsets?
-
+    var customImageLogo: UIImage?
+    var customImageLoading: UIImage?
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

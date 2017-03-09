@@ -24,14 +24,16 @@ open class CustomRefreshHeaderView: CustomRefreshView {
     }
 
     lazy var logoImageView: UIImageView? = {
-        let image = self.getImage(of: "loading_logo")
+//        let image = self.getImage(of: "loading_logo")
+        let image = self.chooseLogoImage()
         let imageView = UIImageView(image: image)
         self.addSubview(imageView)
         return imageView
     }()
 
     lazy var circleImageView: UIImageView? = {
-        let image = self.getImage(of: "loading_circle")
+//        let image = self.getImage(of: "loading_circle")
+        let image = self.chooseLoadingImage()
         let imageView = UIImageView(image: image)
         self.addSubview(imageView)
         return imageView
@@ -67,6 +69,32 @@ open class CustomRefreshHeaderView: CustomRefreshView {
                     self.executeRefreshingCallback()
             })
         }
+    }
+    
+    fileprivate func chooseLogoImage() -> UIImage {
+        let traitCollection = UITraitCollection(displayScale: 3)
+        guard let customImageLogo = customImageLogo else {
+            let bundle = Bundle(for: classForCoder)
+            let image = UIImage(named: "loading_logo", in: bundle, compatibleWith: traitCollection)
+            guard let newImage = image else {
+                return UIImage()
+            }
+            return newImage
+        }
+        return customImageLogo
+    }
+    
+    fileprivate func chooseLoadingImage() -> UIImage {
+        let traitCollection = UITraitCollection(displayScale: 3)
+        guard let customImageLoading = customImageLoading else {
+            let bundle = Bundle(for: classForCoder)
+            let image = UIImage(named: "loading_circle", in: bundle, compatibleWith: traitCollection)
+            guard let newImage = image else {
+                return UIImage()
+            }
+            return newImage
+        }
+        return customImageLoading
     }
 
     fileprivate func getImage(of name: String) -> UIImage {
@@ -224,8 +252,12 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
-    open class func headerWithRefreshingBlock(_ customBackgroundColor: UIColor = UIColor.clear, startLoading: @escaping () -> Void) -> CustomRefreshHeaderView {
+    open class func headerWithRefreshingBlock(_ customBackgroundColor: UIColor = UIColor.clear,customLogo: UIImage? = nil,customImageLoading: UIImage? = nil, startLoading: @escaping () -> Void) -> CustomRefreshHeaderView {
         let header = self.init()
+        header.customImageLogo = customLogo
+        header.customImageLoading = customImageLoading
+        header.logoImageView?.image = header.chooseLogoImage()
+        header.circleImageView?.image = header.chooseLoadingImage()
         header.start = startLoading
         header.customBackgroundColor = customBackgroundColor
         return header
@@ -265,6 +297,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
     }
 
     fileprivate func prepare() {
+        UIImageView.appearance(for: UITraitCollection(displayScale: 3))
         autoresizingMask = .flexibleWidth
         sizeHeight = kRefreshHeaderHeight
     }

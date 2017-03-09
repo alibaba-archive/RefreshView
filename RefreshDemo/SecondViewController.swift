@@ -16,12 +16,20 @@ class SecondViewController: UITableViewController {
     func beginRefresh() {
         self.tableView.refreshHeader?.autoBeginRefreshing()
     }
+    
+    func getImage(of name: String) -> UIImage {
+        let traitCollection = UITraitCollection(displayScale: 3)
+        let bundle = Bundle(for: self.classForCoder)
+        guard let image = UIImage(named: name, in: bundle, compatibleWith: traitCollection) else { return UIImage() }
+        
+        return image
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.tableView.tableFooterView = UIView()
         self.tableView.isShowLoadingView = true
+        self.tableView.loadingView?.customLoadingViewWith(getImage(of: "loading"))
         self.tableView.loadingView?.offsetY = 30
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(beginRefresh))
@@ -36,8 +44,10 @@ class SecondViewController: UITableViewController {
                 self.tableView.refreshFooter?.isShowLoadingView = true
             }
         })
+        
+        let image = self.getImage(of: "loading")
 
-        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock(UIColor.white, startLoading: {
+        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock(UIColor.white,customLogo: image, startLoading: {
             let minseconds = 3 * Double(NSEC_PER_SEC)
             let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
@@ -48,7 +58,7 @@ class SecondViewController: UITableViewController {
                 }
                 self.tableView.refreshHeader?.endRefreshing()
                 self.tableView.refreshFooter?.isShowLoadingView = false
-                self.tableView.refreshHeader = nil
+//                self.tableView.refreshHeader = nil
             })
         })
 

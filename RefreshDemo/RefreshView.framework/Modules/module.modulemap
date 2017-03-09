@@ -1,0 +1,3 @@
+framework module RefreshView {
+    header "RefreshView-Swift.h"
+}

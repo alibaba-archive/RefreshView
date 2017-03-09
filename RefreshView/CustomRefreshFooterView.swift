@@ -46,7 +46,8 @@ open class CustomRefreshFooterView: CustomRefreshView {
     }
 
     lazy var logoImageView: UIImageView? = {
-        let image = self.getImage(of: "loading_logo")
+//        let image = self.getImage(of: "loading_logo")
+        let image = self.chooseLogoImage()
         let imageView = UIImageView(image: image)
         imageView.isHidden = true
         self.addSubview(imageView)
@@ -54,7 +55,8 @@ open class CustomRefreshFooterView: CustomRefreshView {
     }()
 
     lazy var circleImageView: UIImageView? = {
-        let image = self.getImage(of: "loading_circle")
+//        let image = self.getImage(of: "loading_circle")
+        let image = self.chooseLoadingImage()
         let imageView = UIImageView(image: image)
         imageView.isHidden = true
         self.addSubview(imageView)
@@ -70,6 +72,32 @@ open class CustomRefreshFooterView: CustomRefreshView {
         self.addSubview(statusLabel)
         return statusLabel
     }()
+    
+    fileprivate func chooseLogoImage() -> UIImage {
+        let traitCollection = UITraitCollection(displayScale: 3)
+        guard let customImageLogo = customImageLogo else {
+            let bundle = Bundle(for: classForCoder)
+            let image = UIImage(named: "loading_logo", in: bundle, compatibleWith: traitCollection)
+            guard let newImage = image else {
+                return UIImage()
+            }
+            return newImage
+        }
+        return customImageLogo
+    }
+    
+    fileprivate func chooseLoadingImage() -> UIImage {
+        let traitCollection = UITraitCollection(displayScale: 3)
+        guard let customImageLoading = customImageLoading else {
+            let bundle = Bundle(for: classForCoder)
+            let image = UIImage(named: "loading_circle", in: bundle, compatibleWith: traitCollection)
+            guard let newImage = image else {
+                return UIImage()
+            }
+            return newImage
+        }
+        return customImageLoading
+    }
 
     func getImage(of name: String) -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
@@ -224,8 +252,12 @@ open class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    open class func footerWithLoadingText(_ loadingText: String, startLoading: @escaping () -> Void) -> CustomRefreshFooterView {
+    open class func footerWithLoadingText(_ loadingText: String,customLogo: UIImage? = nil,customLoading: UIImage? = nil, startLoading: @escaping () -> Void) -> CustomRefreshFooterView {
         let footer = footerWithRefreshingBlock(startLoading)
+        footer.customImageLogo = customLogo
+        footer.customImageLoading = customLoading
+        footer.logoImageView?.image = footer.chooseLogoImage()
+        footer.circleImageView?.image = footer.chooseLoadingImage()
         footer.loadingText = loadingText
         return footer
     }
