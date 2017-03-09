@@ -79,14 +79,6 @@ open class CustomRefreshLoadingView: UIView {
         self.addSubview(self.imageViewLoading)
         self.placeSubviews()
     }
-
-    fileprivate func getImage(of name: String) -> UIImage {
-        let traitCollection = UITraitCollection(displayScale: 3)
-        let bundle = Bundle(for: self.classForCoder)
-        guard let image = UIImage(named: name, in: bundle, compatibleWith: traitCollection) else { return UIImage() }
-
-        return image
-    }
     
     fileprivate func chooseLogoImage() -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
