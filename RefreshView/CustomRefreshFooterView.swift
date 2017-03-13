@@ -46,7 +46,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
     }
 
     lazy var logoImageView: UIImageView? = {
-        let image = self.chooseLogoImage()
+        let image = self.getLogoImage()
         let imageView = UIImageView(image: image)
         imageView.isHidden = true
         self.addSubview(imageView)
@@ -54,7 +54,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
     }()
 
     lazy var circleImageView: UIImageView? = {
-        let image = self.chooseLoadingImage()
+        let image = self.getLoadingImage()
         let imageView = UIImageView(image: image)
         imageView.isHidden = true
         self.addSubview(imageView)
@@ -71,7 +71,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
         return statusLabel
     }()
     
-    fileprivate func chooseLogoImage() -> UIImage {
+    fileprivate func getLogoImage() -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
         guard let customImageLogo = customImageLogo else {
             let bundle = Bundle(for: classForCoder)
@@ -84,7 +84,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
         return customImageLogo
     }
     
-    fileprivate func chooseLoadingImage() -> UIImage {
+    fileprivate func getLoadingImage() -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
         guard let customImageLoading = customImageLoading else {
             let bundle = Bundle(for: classForCoder)
@@ -240,12 +240,12 @@ open class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    open class func footerWithLoadingText(_ loadingText: String,customLogo: UIImage? = nil,customLoading: UIImage? = nil, startLoading: @escaping () -> Void) -> CustomRefreshFooterView {
+    open class func footerWithLoadingText(_ loadingText: String, customLogo: UIImage? = nil, customLoading: UIImage? = nil, startLoading: @escaping () -> Void) -> CustomRefreshFooterView {
         let footer = footerWithRefreshingBlock(startLoading)
         footer.customImageLogo = customLogo
         footer.customImageLoading = customLoading
-        footer.logoImageView?.image = footer.chooseLogoImage()
-        footer.circleImageView?.image = footer.chooseLoadingImage()
+        footer.logoImageView?.image = footer.getLogoImage()
+        footer.circleImageView?.image = footer.getLoadingImage()
         footer.loadingText = loadingText
         return footer
     }

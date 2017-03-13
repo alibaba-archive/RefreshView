@@ -71,8 +71,8 @@ open class CustomRefreshLoadingView: UIView {
         UIImageView.appearance(for: UITraitCollection(displayScale: 3))
         self.imageViewLogo = UIImageView()
         self.imageViewLoading = UIImageView()
-        self.imageViewLogo.image = chooseLogoImage()
-        self.imageViewLoading.image = chooseLoadingImage()
+        self.imageViewLogo.image = getLogoImage()
+        self.imageViewLoading.image = getLoadingImage()
         self.imageViewLogo.backgroundColor = UIColor.clear
         self.imageViewLoading.backgroundColor = UIColor.clear
         self.addSubview(self.imageViewLogo)
@@ -80,7 +80,7 @@ open class CustomRefreshLoadingView: UIView {
         self.placeSubviews()
     }
     
-    fileprivate func chooseLogoImage() -> UIImage {
+    fileprivate func getLogoImage() -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
         guard let customImageLogo = logoImage else {
             let bundle = Bundle(for: classForCoder)
@@ -93,7 +93,7 @@ open class CustomRefreshLoadingView: UIView {
         return customImageLogo
     }
     
-    fileprivate func chooseLoadingImage() -> UIImage {
+    fileprivate func getLoadingImage() -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
         guard let customLoadingImage = loadingImage else {
             let bundle = Bundle(for: classForCoder)
@@ -130,7 +130,7 @@ open class CustomRefreshLoadingView: UIView {
     open func customLoadingViewWith(_ customLogoImage: UIImage? = nil, customLoadingImage: UIImage? = nil) {
         logoImage = customLogoImage
         loadingImage = customLoadingImage
-        imageViewLogo.image = chooseLogoImage()
-        imageViewLoading.image = chooseLoadingImage()
+        imageViewLogo.image = getLogoImage()
+        imageViewLoading.image = getLoadingImage()
     }
 }

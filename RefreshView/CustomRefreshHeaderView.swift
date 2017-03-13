@@ -24,14 +24,14 @@ open class CustomRefreshHeaderView: CustomRefreshView {
     }
 
     lazy var logoImageView: UIImageView? = {
-        let image = self.chooseLogoImage()
+        let image = self.getLogoImage()
         let imageView = UIImageView(image: image)
         self.addSubview(imageView)
         return imageView
     }()
 
     lazy var circleImageView: UIImageView? = {
-        let image = self.chooseLoadingImage()
+        let image = self.getLoadingImage()
         let imageView = UIImageView(image: image)
         self.addSubview(imageView)
         return imageView
@@ -69,7 +69,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
     
-    fileprivate func chooseLogoImage() -> UIImage {
+    fileprivate func getLogoImage() -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
         guard let customImageLogo = customImageLogo else {
             let bundle = Bundle(for: classForCoder)
@@ -82,7 +82,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         return customImageLogo
     }
     
-    fileprivate func chooseLoadingImage() -> UIImage {
+    fileprivate func getLoadingImage() -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
         guard let customImageLoading = customImageLoading else {
             let bundle = Bundle(for: classForCoder)
@@ -240,12 +240,12 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
-    open class func headerWithRefreshingBlock(_ customBackgroundColor: UIColor = UIColor.clear,customLogo: UIImage? = nil,customImageLoading: UIImage? = nil, startLoading: @escaping () -> Void) -> CustomRefreshHeaderView {
+    open class func headerWithRefreshingBlock(_ customBackgroundColor: UIColor = UIColor.clear, customLogo: UIImage? = nil, customImageLoading: UIImage? = nil, startLoading: @escaping () -> Void) -> CustomRefreshHeaderView {
         let header = self.init()
         header.customImageLogo = customLogo
         header.customImageLoading = customImageLoading
-        header.logoImageView?.image = header.chooseLogoImage()
-        header.circleImageView?.image = header.chooseLoadingImage()
+        header.logoImageView?.image = header.getLogoImage()
+        header.circleImageView?.image = header.getLoadingImage()
         header.start = startLoading
         header.customBackgroundColor = customBackgroundColor
         return header
