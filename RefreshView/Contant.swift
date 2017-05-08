@@ -22,7 +22,7 @@ let kCustomRefreshFooterMargin: CGFloat = 10.0
 let kCustomRefreshAnimationKey = "custom_rotation"
 let kCustomRefreshFooterStatusColor = UIColor(red: 166/255, green: 166/255, blue: 166/255, alpha: 1)
 
-let kPai = CGFloat(M_PI)
+let kPai = CGFloat.pi
 let kRefreshKeyPathContentOffset = "contentOffset"
 let kRefreshKeyPathContentInset = "contentInset"
 let kRefreshKeyPathContentSize = "contentSize"

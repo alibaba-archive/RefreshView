@@ -10,7 +10,7 @@ import UIKit
 
 open class CustomRefreshFooterView: CustomRefreshView {
 
-    fileprivate var loadingText = LocalizedString(key: "Loading")
+    fileprivate var loadingText = localizedString(key: "Loading")
     fileprivate var isAutomaticallyRefresh = true
     fileprivate var triggerAutomaticallyRefreshPercent: CGFloat = 0.1
 
@@ -22,6 +22,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
             } else if state == .idle {
                 if cellsCount() != 0 {
                     circleImageView?.layer.removeAnimation(forKey: kCustomRefreshAnimationKey)
+                    hideFooterView(true)
                 }
             }
         }
@@ -240,7 +241,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
         placeSubviews()
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
-        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
+        rotateAnimation.toValue = Double.pi * 2.0
         rotateAnimation.duration = 1
         rotateAnimation.repeatCount = Float(CGFloat.greatestFiniteMagnitude)
         rotateAnimation.isRemovedOnCompletion = false
@@ -288,7 +289,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
         hideFooterView(false)
         pullingPercent = 1.0
 
-        if let _ = window {
+        if window != nil {
             state = .refreshing
         } else {
             if state != .refreshing {

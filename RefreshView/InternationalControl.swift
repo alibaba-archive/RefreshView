@@ -26,7 +26,7 @@ public enum CustomRefreshLanguage {
     }
 }
 
-internal func LocalizedString(key: String, comment: String? = nil) -> String {
+internal func localizedString(key: String, comment: String? = nil) -> String {
     return InternationalControl.sharedControl.localizedString(key: key, comment: comment)
 }
 

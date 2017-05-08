@@ -88,7 +88,7 @@ open class CustomRefreshLoadingView: UIView {
     open func startAnimation() {
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
-        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
+        rotateAnimation.toValue = Double.pi * 2.0
         rotateAnimation.duration = 1
         rotateAnimation.repeatCount = Float(CGFloat.greatestFiniteMagnitude)
         rotateAnimation.isRemovedOnCompletion = false
