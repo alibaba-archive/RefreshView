@@ -45,7 +45,7 @@ public extension UIScrollView {
     var isShowLoadingView: Bool {
         get {
             let loadingView = self.viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
-            if let _ = loadingView {
+            if loadingView != nil {
                 return true
             }
             return false
