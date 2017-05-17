@@ -48,7 +48,11 @@ open class CustomRefreshFooterView: CustomRefreshView {
     }
 
     lazy var logoImageView: UIImageView? = {
+
         let image = self.getImage(of: CustomLogoNameManager.shared.target.logoName)
+
+
+
         let imageView = UIImageView(image: image)
         imageView.isHidden = true
         self.addSubview(imageView)

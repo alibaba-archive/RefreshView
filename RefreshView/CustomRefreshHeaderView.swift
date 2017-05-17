@@ -24,7 +24,10 @@ open class CustomRefreshHeaderView: CustomRefreshView {
     }
 
     lazy var logoImageView: UIImageView? = {
+
         let image = self.getImage(of: CustomLogoNameManager.shared.target.logoName)
+
+
         let imageView = UIImageView(image: image)
         self.addSubview(imageView)
         return imageView

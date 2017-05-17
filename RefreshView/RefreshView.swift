@@ -23,5 +23,7 @@ public enum CustomTargetType {
 }
 
 public func changeTarget(type targetType: CustomTargetType) {
+
     CustomLogoNameManager.shared.target = targetType
+    
 }

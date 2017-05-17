@@ -12,6 +12,7 @@ class CustomLogoNameManager {
 
     public static let shared = CustomLogoNameManager()
 
+    
     public var target: CustomTargetType = .teambition
 
     private init() {}
