@@ -8,21 +8,7 @@
 
 import Foundation
 
-public enum CustomTargetType {
-    case teambition
-    case people
-
-    var logoName: String {
-        switch self {
-        case .teambition:
-            return "loading_logo"
-        case .people:
-            return "people_logo"
-        }
-    }
-}
-
-public class CustomLogoNameManager {
+class CustomLogoNameManager {
 
     public static let shared = CustomLogoNameManager()
 

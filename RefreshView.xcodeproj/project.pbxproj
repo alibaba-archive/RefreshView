@@ -19,6 +19,7 @@
 		C4F5766C1C633546007E04CC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5766A1C633546007E04CC /* UIView+Extension.swift */; };
 		C4F5766D1C633546007E04CC /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5766B1C633546007E04CC /* UIScrollView+Extension.swift */; };
 		C4F576731C633771007E04CC /* RefreshHeader+Extensition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F576721C633771007E04CC /* RefreshHeader+Extensition.swift */; };
+		F1FF97E51ECD76C7007232A8 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF97E41ECD76C7007232A8 /* RefreshView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		C4F5766A1C633546007E04CC /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C4F5766B1C633546007E04CC /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		C4F576721C633771007E04CC /* RefreshHeader+Extensition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RefreshHeader+Extensition.swift"; sourceTree = "<group>"; };
+		F1FF97E41ECD76C7007232A8 /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				867980781CE460ED0017E17E /* CustomRefreshView.swift */,
 				C4A86C7B1C7613A000C42235 /* Contant.swift */,
 				A10044791ECC34710050A8F0 /* CustomLogoNameManager.swift */,
+				F1FF97E41ECD76C7007232A8 /* RefreshView.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1FF97E51ECD76C7007232A8 /* RefreshView.swift in Sources */,
 				C4F576731C633771007E04CC /* RefreshHeader+Extensition.swift in Sources */,
 				867980791CE460ED0017E17E /* CustomRefreshView.swift in Sources */,
 				C4F5766C1C633546007E04CC /* UIView+Extension.swift in Sources */,
