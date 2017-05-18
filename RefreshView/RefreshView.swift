@@ -6,12 +6,11 @@
 //  Copyright © 2017年 ZouLiangming. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public enum CustomTargetType {
     case teambition
     case people
-    
     var logoName: String {
         switch self {
         case .teambition:
@@ -26,4 +25,12 @@ public func changeTarget(type targetType: CustomTargetType) {
 
     CustomLogoNameManager.shared.target = targetType
     
+}
+
+/// update RefreshView's logo
+///
+/// - Parameter logoIcon: logoIcon is priority to CustomTargetType. if you set logoIcon, RefreshView
+/// will ignore CustomTargetType setting
+public func updateLogoIcon(logo logoIcon: UIImage) {
+    CustomLogoNameManager.shared.logoImage = logoIcon
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 ZouLiangming. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class CustomLogoNameManager {
 
@@ -14,6 +14,8 @@ class CustomLogoNameManager {
 
     
     public var target: CustomTargetType = .teambition
+    
+    public var logoImage: UIImage?
 
     private init() {}
 }
