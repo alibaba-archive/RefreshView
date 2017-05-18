@@ -8,27 +8,7 @@
 
 import UIKit
 
-public enum CustomTargetType {
-    case teambition
-    case people
-    var logoName: String {
-        switch self {
-        case .teambition:
-            return "loading_logo"
-        case .people:
-            return "people_logo"
-        }
-    }
-}
-
-public func changeTarget(type targetType: CustomTargetType) {
-    CustomLogoNameManager.shared.target = targetType
-}
-
-/// update RefreshView's logo
-///
-/// - Parameter logoIcon: logoIcon is priority to CustomTargetType. if you set logoIcon, RefreshView
-/// will ignore CustomTargetType setting
+// support setting custom logo image
 public func updateLogoIcon(logo logoIcon: UIImage) {
-    CustomLogoNameManager.shared.logoImage = logoIcon
+    CustomLogoManager.shared.logoImage = logoIcon
 }

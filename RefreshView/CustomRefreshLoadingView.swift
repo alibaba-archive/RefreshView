@@ -68,10 +68,10 @@ open class CustomRefreshLoadingView: UIView {
     fileprivate func commonInit() {
         self.imageViewLogo = UIImageView()
         self.imageViewLoading = UIImageView()
-        if let logoImage = CustomLogoNameManager.shared.logoImage {
+        if let logoImage = CustomLogoManager.shared.logoImage {
             self.imageViewLogo.image = logoImage
         } else {
-            self.imageViewLogo.image = getImage(of: CustomLogoNameManager.shared.target.logoName)
+            self.imageViewLogo.image = getImage(of: CustomLogoManager.shared.logoName)
         }
         self.imageViewLoading.image = getImage(of: "loading_circle")
         self.imageViewLogo.backgroundColor = UIColor.clear
@@ -104,13 +104,6 @@ open class CustomRefreshLoadingView: UIView {
             self.alpha = 0
             self.scrollView?.bounces = true
         }, completion: { (_) -> Void in
-            self.imageViewLoading.layer.removeAnimation(forKey: "rotation")
-            self.removeFromSuperview()
-            self.alpha = 1
-        })
-    }
-}
- Void in
             self.imageViewLoading.layer.removeAnimation(forKey: "rotation")
             self.removeFromSuperview()
             self.alpha = 1
