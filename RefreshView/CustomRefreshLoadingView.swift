@@ -12,20 +12,20 @@ open class CustomRefreshLoadingView: UIView {
     fileprivate weak var scrollView: UIScrollView?
     fileprivate var imageViewLogo: UIImageView!
     fileprivate var imageViewLoading: UIImageView!
-
+    
     open var offsetX: CGFloat?
     open var offsetY: CGFloat?
     fileprivate let loadingWidth: CGFloat = 26.0
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         prepare()
     }
-
+    
     fileprivate func prepare() {
         autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
-
+    
     fileprivate func placeSubviews() {
         var originX: CGFloat = 0
         var originY: CGFloat = 0
@@ -42,14 +42,14 @@ open class CustomRefreshLoadingView: UIView {
         self.imageViewLogo.frame = CGRect(x: originX, y: originY, width: loadingWidth, height: loadingWidth)
         self.imageViewLoading.frame = CGRect(x: originX, y: originY, width: loadingWidth, height: loadingWidth)
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     override open func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
-
+        
         if let newScrollView = newSuperview as? UIScrollView {
             scrollView = newScrollView
             scrollView?.bounces = false
@@ -59,12 +59,12 @@ open class CustomRefreshLoadingView: UIView {
             backgroundColor = scrollView?.backgroundColor
         }
     }
-
+    
     override open func layoutSubviews() {
         super.layoutSubviews()
         placeSubviews()
     }
-
+    
     fileprivate func commonInit() {
         self.imageViewLogo = UIImageView()
         self.imageViewLoading = UIImageView()
@@ -80,15 +80,15 @@ open class CustomRefreshLoadingView: UIView {
         self.addSubview(self.imageViewLoading)
         self.placeSubviews()
     }
-
+    
     fileprivate func getImage(of name: String) -> UIImage {
         let traitCollection = UITraitCollection(displayScale: 3)
         let bundle = Bundle(for: self.classForCoder)
         guard let image = UIImage(named: name, in: bundle, compatibleWith: traitCollection) else { return UIImage() }
-
+        
         return image
     }
-
+    
     open func startAnimation() {
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
@@ -98,12 +98,19 @@ open class CustomRefreshLoadingView: UIView {
         rotateAnimation.isRemovedOnCompletion = false
         self.imageViewLoading.layer.add(rotateAnimation, forKey: "rotation")
     }
-
+    
     open func stopAnimation() {
         UIView.animate(withDuration: 0.5, animations: {
             self.alpha = 0
             self.scrollView?.bounces = true
         }, completion: { (_) -> Void in
+            self.imageViewLoading.layer.removeAnimation(forKey: "rotation")
+            self.removeFromSuperview()
+            self.alpha = 1
+        })
+    }
+}
+ Void in
             self.imageViewLoading.layer.removeAnimation(forKey: "rotation")
             self.removeFromSuperview()
             self.alpha = 1
