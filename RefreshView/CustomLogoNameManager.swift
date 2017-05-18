@@ -8,9 +8,9 @@
 
 import Foundation
 
-class CustomLogoNameManager {
+class CustomTargetLogoNameManager {
 
-    public static let shared = CustomLogoNameManager()
+    public static let shared = CustomTargetLogoNameManager()
 
     public var target: CustomTargetType = .teambition
 
