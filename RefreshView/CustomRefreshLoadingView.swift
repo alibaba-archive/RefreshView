@@ -68,7 +68,11 @@ open class CustomRefreshLoadingView: UIView {
     fileprivate func commonInit() {
         self.imageViewLogo = UIImageView()
         self.imageViewLoading = UIImageView()
-        self.imageViewLogo.image = getImage(of: CustomLogoNameManager.shared.target.logoName)
+        if let logoImage = CustomLogoNameManager.shared.logoImage {
+            self.imageViewLogo.image = logoImage
+        } else {
+            self.imageViewLogo.image = getImage(of: CustomLogoNameManager.shared.target.logoName)
+        }
         self.imageViewLoading.image = getImage(of: "loading_circle")
         self.imageViewLogo.backgroundColor = UIColor.clear
         self.imageViewLoading.backgroundColor = UIColor.clear
