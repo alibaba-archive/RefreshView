@@ -20,10 +20,11 @@ class SecondViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        RefreshView.changeTarget(type: .people)
+
         self.tableView.tableFooterView = UIView()
         self.tableView.isShowLoadingView = true
         self.tableView.loadingView?.offsetY = 30
-
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(beginRefresh))
 
         let minseconds = 2 * Double(NSEC_PER_SEC)

@@ -27,7 +27,8 @@ class UIViewControllerDemo: UIViewController {
 
         //self.tableView.tableFooterView = UIView()
         //self.tableView.isShowLoadingView = true
-
+        
+        RefreshView.updateLogoIcon(logo: UIImage(named: "people_logo")!)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(beginRefresh))
 
         self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock {
