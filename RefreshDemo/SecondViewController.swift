@@ -20,7 +20,7 @@ class SecondViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        RefreshView.changeTarget(type: .people)
+//        RefreshView.changeTarget(type: .people)
 
         self.tableView.tableFooterView = UIView()
         self.tableView.isShowLoadingView = true

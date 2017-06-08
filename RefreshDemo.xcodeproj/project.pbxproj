@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		862AC81B1EE8EB7C00159E4A /* RefreshView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 862AC81A1EE8EB7C00159E4A /* RefreshView.framework */; };
+		862AC81C1EE8EB7C00159E4A /* RefreshView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 862AC81A1EE8EB7C00159E4A /* RefreshView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8697BC1D1CCE08C100E12544 /* UIViewControllerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697BC1C1CCE08C100E12544 /* UIViewControllerDemo.swift */; };
 		86ECCB2E1C97F535008A6D58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ECCB2D1C97F535008A6D58 /* AppDelegate.swift */; };
 		86ECCB331C97F535008A6D58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86ECCB311C97F535008A6D58 /* Main.storyboard */; };
@@ -16,12 +18,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		865AB6DB1D3BC455008D1EC1 /* Embed Frameworks */ = {
+		862AC81D1EE8EB7C00159E4A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				862AC81C1EE8EB7C00159E4A /* RefreshView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -29,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		862AC81A1EE8EB7C00159E4A /* RefreshView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RefreshView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8697BC1C1CCE08C100E12544 /* UIViewControllerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerDemo.swift; sourceTree = "<group>"; };
 		86ECCB2A1C97F535008A6D58 /* RefreshDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RefreshDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86ECCB2D1C97F535008A6D58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				862AC81B1EE8EB7C00159E4A /* RefreshView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +58,7 @@
 		86ECCB211C97F535008A6D58 = {
 			isa = PBXGroup;
 			children = (
+				862AC81A1EE8EB7C00159E4A /* RefreshView.framework */,
 				86ECCB2C1C97F535008A6D58 /* RefreshDemo */,
 				86ECCB2B1C97F535008A6D58 /* Products */,
 			);
@@ -91,7 +97,7 @@
 				86ECCB271C97F535008A6D58 /* Frameworks */,
 				86ECCB281C97F535008A6D58 /* Resources */,
 				86ECCB4D1C98015A008A6D58 /* ShellScript */,
-				865AB6DB1D3BC455008D1EC1 /* Embed Frameworks */,
+				862AC81D1EE8EB7C00159E4A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
