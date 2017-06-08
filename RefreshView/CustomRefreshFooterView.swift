@@ -13,6 +13,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
     fileprivate var loadingText = localizedString(key: "Loading")
     fileprivate var isAutomaticallyRefresh = true
     fileprivate var triggerAutomaticallyRefreshPercent: CGFloat = 0.1
+    fileprivate var lastUpdated: Date = Date()
 
     var state: RefreshState? {
         didSet {
@@ -282,6 +283,11 @@ open class CustomRefreshFooterView: CustomRefreshView {
     }
 
     fileprivate func beginRefreshing() {
+        if Date().timeIntervalSince(lastUpdated) < 1 {
+            return
+        }
+        lastUpdated = Date()
+
         UIView.animate(withDuration: kCustomRefreshFastAnimationTime, animations: {
             self.alpha = 1.0
         })
@@ -300,6 +306,10 @@ open class CustomRefreshFooterView: CustomRefreshView {
     }
 
     open func endRefreshing() {
-        state = .idle
+        if Date().timeIntervalSince(lastUpdated) < 0.1 {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                self.state = .idle
+            }
+        }
     }
 }
