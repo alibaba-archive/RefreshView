@@ -310,6 +310,8 @@ open class CustomRefreshFooterView: CustomRefreshView {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                 self.state = .idle
             }
+        } else {
+            self.state = .idle
         }
     }
 }
