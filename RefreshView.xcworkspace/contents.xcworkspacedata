@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:RefreshDemo.xcodeproj">
+      location = "group:RefreshView.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:RefreshView.xcodeproj">
+      location = "group:RefreshDemo.xcodeproj">
    </FileRef>
 </Workspace>

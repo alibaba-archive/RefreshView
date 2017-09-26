@@ -275,7 +275,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
         if cellsCount() != 0 {
             let text = (statusLabel?.text)!
             let font = (statusLabel?.font)!
-            let statusLabelWidth: CGFloat =  ceil(text.size(attributes: [NSFontAttributeName: font]).width)
+            let statusLabelWidth: CGFloat = ceil(text.size(withAttributes: [.font: font]).width)
             let originX = (sizeWidth - statusLabelWidth - (circleImageView?.sizeWidth)! - kCustomRefreshFooterMargin) / 2.0
             logoImageView?.center = CGPoint(x: originX+13, y: 20)
             circleImageView?.center = CGPoint(x: originX+13, y: 20)
