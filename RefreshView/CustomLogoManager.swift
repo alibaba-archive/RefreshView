@@ -6,7 +6,6 @@
 //  Copyright © 2017年 ZouLiangming. All rights reserved.
 //
 
-
 import UIKit
 
 class CustomLogoManager {

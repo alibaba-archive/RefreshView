@@ -12,9 +12,8 @@ class CustomLogoNameManager {
 
     public static let shared = CustomLogoNameManager()
 
-    
     public var target: CustomTargetType = .teambition
-    
+
     public var logoImage: UIImage?
 
     private init() {}

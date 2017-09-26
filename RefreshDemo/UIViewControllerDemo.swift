@@ -14,7 +14,7 @@ class UIViewControllerDemo: UIViewController {
     var array = [String]()
     @IBOutlet var tableView: UITableView!
 
-    func beginRefresh() {
+    @objc func beginRefresh() {
         self.tableView.refreshHeader?.autoBeginRefreshing()
     }
 
@@ -27,7 +27,7 @@ class UIViewControllerDemo: UIViewController {
 
         //self.tableView.tableFooterView = UIView()
         //self.tableView.isShowLoadingView = true
-        
+
         RefreshView.updateLogoIcon(logo: UIImage(named: "people_logo")!)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(beginRefresh))
 

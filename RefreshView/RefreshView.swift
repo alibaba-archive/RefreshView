@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 public func updateLogoIcon(logo logoIcon: UIImage) {
     CustomLogoManager.shared.logoImage = logoIcon
 }

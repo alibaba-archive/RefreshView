@@ -25,7 +25,6 @@ open class CustomRefreshHeaderView: CustomRefreshView {
 
     lazy var logoImageView: UIImageView? = {
 
-        
         var image = UIImage()
         if let logoImage = CustomLogoManager.shared.logoImage {
             image = logoImage
