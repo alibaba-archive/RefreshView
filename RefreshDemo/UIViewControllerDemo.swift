@@ -35,8 +35,8 @@ class UIViewControllerDemo: UIViewController {
             let minseconds = 3 * Double(NSEC_PER_SEC)
             let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
-                for i in 0...20 {
-                    self.array.append(String(i))
+                for index in 0...20 {
+                    self.array.append(String(index))
                 }
                 self.tableView.refreshHeader?.endRefreshing()
                 self.tableView.reloadData()
@@ -59,8 +59,8 @@ class UIViewControllerDemo: UIViewController {
             let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
                 let count = self.array.count
-                for i in count+1...count+5 {
-                    self.array.append(String(i))
+                for index in count+1...count+5 {
+                    self.array.append(String(index))
                     self.tableView.reloadData()
                 }
                 self.tableView.refreshFooter?.endRefreshing()

@@ -30,8 +30,8 @@ class SecondViewController: UITableViewController {
         let minseconds = 2 * Double(NSEC_PER_SEC)
         let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
-            for i in 1...10 {
-                self.content.append(String(i))
+            for index in 1...10 {
+                self.content.append(String(index))
                 self.tableView.reloadData()
                 self.tableView.isShowLoadingView = false
                 self.tableView.refreshFooter?.isShowLoadingView = true
@@ -43,8 +43,8 @@ class SecondViewController: UITableViewController {
             let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
                 let count = self.content.count
-                for i in count+1...count+5 {
-                    self.content.append(String(i))
+                for index in count+1...count+5 {
+                    self.content.append(String(index))
                     self.tableView.reloadData()
                 }
                 self.tableView.refreshHeader?.endRefreshing()
@@ -58,8 +58,8 @@ class SecondViewController: UITableViewController {
             let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
                 let count = self.content.count
-                for i in count+1...count+5 {
-                    self.content.append(String(i))
+                for index in count+1...count+5 {
+                    self.content.append(String(index))
                     self.tableView.reloadData()
                 }
                 self.tableView.refreshFooter?.endRefreshing()

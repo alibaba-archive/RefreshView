@@ -138,7 +138,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         if !isUserInteractionEnabled || isHidden {
             return
         }
@@ -154,6 +154,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
+    // swiftlint:disable identifier_name
     fileprivate func changeCircleLayer(to value: CGFloat) {
         let startAngle = kPai/2
         let endAngle = kPai/2+2*kPai*CGFloat(value)
@@ -179,7 +180,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
-    fileprivate func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    fileprivate func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey: Any]?) {
         if state == .refreshing {
             if window != nil {
                 var insetT = -scrollView!.offsetY > scrollViewOriginalInset!.top ? -scrollView!.offsetY : scrollViewOriginalInset!.top

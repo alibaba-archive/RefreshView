@@ -170,7 +170,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         if !isUserInteractionEnabled {
             return
         }
@@ -192,7 +192,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    fileprivate func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    fileprivate func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey: Any]?) {
         if state != .idle || !isAutomaticallyRefresh || originY == 0 || cellsCount() == 0 || !isShowLoadingView {
             return
         }
@@ -211,11 +211,11 @@ open class CustomRefreshFooterView: CustomRefreshView {
         }
     }
 
-    fileprivate func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    fileprivate func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey: Any]?) {
         originY = scrollView!.contentHeight
     }
 
-    fileprivate func scrollViewPanStateDidChange(_ chnage: [NSKeyValueChangeKey : Any]?) {
+    fileprivate func scrollViewPanStateDidChange(_ chnage: [NSKeyValueChangeKey: Any]?) {
         if state != .idle || cellsCount() == 0 || !isShowLoadingView {
             return
         }
