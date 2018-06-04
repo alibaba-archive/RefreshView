@@ -57,10 +57,12 @@ public extension UIScrollView {
 
                 self.addSubview(loadingView)
                 loadingView.startAnimation()
+                self.isScrollEnabled = false
             } else {
                 let loadingView = self.viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
                 loadingView?.stopAnimation()
                 loadingView?.removeFromSuperview()
+                self.isScrollEnabled = true
             }
         }
     }
