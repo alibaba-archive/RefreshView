@@ -18,6 +18,20 @@ class UIViewControllerDemo: UIViewController {
         self.tableView.refreshHeader?.autoBeginRefreshing()
     }
 
+    @objc func loadingData() {
+        tableView.isShowLoadingView = true
+
+        let minseconds = 3 * Double(NSEC_PER_SEC)
+        let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dtime, execute: {
+            for index in 0...20 {
+                self.array.append(String(index))
+            }
+            self.tableView.isShowLoadingView = false
+            self.tableView.reloadData()
+        })
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +43,11 @@ class UIViewControllerDemo: UIViewController {
         //self.tableView.isShowLoadingView = true
 
         RefreshView.updateLogoIcon(logo: UIImage(named: "people_logo")!)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(beginRefresh))
+        let refresh = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(beginRefresh))
+        let loading = UIBarButtonItem(title: "Loading", style: .done, target: self, action: #selector(loadingData))
+
+        self.navigationItem.rightBarButtonItems = [refresh, loading]
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(beginRefresh))
 
         self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock {
             let minseconds = 3 * Double(NSEC_PER_SEC)
