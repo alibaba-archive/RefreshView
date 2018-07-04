@@ -54,6 +54,7 @@ open class CustomRefreshLoadingView: UIView {
             scrollView = newScrollView
             scrollView?.bounces = false
             originY = newScrollView.bounds.origin.y
+            originX = newScrollView.bounds.origin.x
             sizeWidth = newScrollView.sizeWidth
             sizeHeight = newScrollView.sizeHeight
             commonInit()
