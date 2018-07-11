@@ -11,63 +11,63 @@ import UIKit
 public extension UIScrollView {
     var refreshHeader: CustomRefreshHeaderView? {
         get {
-            return self.viewWithTag(kRefreshHeaderTag) as? CustomRefreshHeaderView
+            return viewWithTag(kRefreshHeaderTag) as? CustomRefreshHeaderView
         }
         set(newValue) {
             if newValue == nil {
-                self.refreshHeader?.removeFromSuperview()
-            } else if newValue != self.refreshHeader {
-                newValue!.tag = kRefreshHeaderTag
-                self.refreshHeader?.removeFromSuperview()
-                self.insertSubview(newValue!, at: 0)
-                self.bringSubview(toFront: newValue!)
+                refreshHeader?.removeFromSuperview()
+            } else if newValue != refreshHeader {
+                newValue?.tag = kRefreshHeaderTag
+                refreshHeader?.removeFromSuperview()
+                insertSubview(newValue!, at: 0)
+                bringSubview(toFront: newValue!)
             }
         }
     }
 
     var refreshFooter: CustomRefreshFooterView? {
         get {
-            let view = self.viewWithTag(kRefreshFooterTag) as? CustomRefreshFooterView
-            return view
+            return viewWithTag(kRefreshFooterTag) as? CustomRefreshFooterView
         }
         set(newValue) {
             if newValue == nil {
-                self.refreshFooter?.removeFromSuperview()
-            } else if newValue != self.refreshFooter {
-                newValue!.tag = kRefreshFooterTag
-                self.refreshFooter?.removeFromSuperview()
-                self.insertSubview(newValue!, at: 0)
-                self.bringSubview(toFront: newValue!)
+                refreshFooter?.removeFromSuperview()
+            } else if newValue != refreshFooter {
+                newValue?.tag = kRefreshFooterTag
+                refreshFooter?.removeFromSuperview()
+                insertSubview(newValue!, at: 0)
+                bringSubview(toFront: newValue!)
             }
         }
     }
 
     var isShowLoadingView: Bool {
         get {
-            let loadingView = self.viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
-            if loadingView != nil {
-                return true
-            }
-            return false
+            let loadingView = viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
+            return loadingView != nil
         }
         set(newValue) {
-            if newValue {
-                let loadingView = CustomRefreshLoadingView()
-                loadingView.tag = kRefreshLoadingTag
-
-                self.addSubview(loadingView)
-                loadingView.startAnimation()
-                self.isScrollEnabled = false
-            } else {
-                let loadingView = self.viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
-                loadingView?.stopAnimation()
-                loadingView?.removeFromSuperview()
-                self.isScrollEnabled = true
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else {
+                    return
+                }
+                if newValue {
+                    let loadingView = CustomRefreshLoadingView()
+                    loadingView.tag = kRefreshLoadingTag
+                    strongSelf.addSubview(loadingView)
+                    loadingView.startAnimation()
+                    strongSelf.isScrollEnabled = false
+                } else {
+                    let loadingView = strongSelf.viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
+                    loadingView?.stopAnimation()
+                    loadingView?.removeFromSuperview()
+                    strongSelf.isScrollEnabled = true
+                }
             }
         }
     }
 
     var loadingView: CustomRefreshLoadingView? {
-        return self.viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
+        return viewWithTag(kRefreshLoadingTag) as? CustomRefreshLoadingView
     }
 }
