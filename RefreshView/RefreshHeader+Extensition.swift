@@ -20,7 +20,7 @@ public extension UIScrollView {
                 newValue!.tag = kRefreshHeaderTag
                 self.refreshHeader?.removeFromSuperview()
                 self.insertSubview(newValue!, at: 0)
-                self.bringSubview(toFront: newValue!)
+                self.bringSubviewToFront(newValue!)
             }
         }
     }
@@ -37,7 +37,7 @@ public extension UIScrollView {
                 newValue!.tag = kRefreshFooterTag
                 self.refreshFooter?.removeFromSuperview()
                 self.insertSubview(newValue!, at: 0)
-                self.bringSubview(toFront: newValue!)
+                self.bringSubviewToFront(newValue!)
             }
         }
     }

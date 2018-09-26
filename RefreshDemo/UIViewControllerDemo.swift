@@ -102,7 +102,7 @@ extension UIViewControllerDemo: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "CELL")
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "CELL")
+            cell = UITableViewCell(style: .default, reuseIdentifier: "CELL")
         }
         cell?.textLabel?.text = "CELL"
         return cell!

@@ -168,7 +168,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         circleLayer?.strokeColor = UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1).cgColor
         circleLayer?.fillColor = nil
         circleLayer?.lineWidth = 2
-        circleLayer?.lineCap = kCALineCapRound
+        circleLayer?.lineCap = .round
     }
 
     open func autoBeginRefreshing() {
@@ -232,7 +232,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         }
     }
 
-    open class func headerWithRefreshingBlock(_ customBackgroundColor: UIColor = UIColor.clear, startLoading: @escaping () -> Void) -> CustomRefreshHeaderView {
+    open class func headerWithRefreshingBlock(_ customBackgroundColor: UIColor = .clear, startLoading: @escaping () -> Void) -> CustomRefreshHeaderView {
         let header = self.init()
         header.start = startLoading
         header.customBackgroundColor = customBackgroundColor
@@ -259,7 +259,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
     }
 
     fileprivate func placeSubviews() {
-        if customBackgroundColor != UIColor.clear {
+        if customBackgroundColor != .clear {
             backgroundColor = customBackgroundColor
         } else {
             backgroundColor = scrollView?.backgroundColor

@@ -220,7 +220,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
             return
         }
 
-        if scrollView?.panGestureRecognizer.state == UIGestureRecognizerState.ended {
+        if scrollView?.panGestureRecognizer.state == .ended {
             if scrollView!.insetTop + scrollView!.contentHeight <= scrollView!.sizeHeight {
                 if scrollView!.offsetY >= -scrollView!.insetTop {
                     beginRefreshing()
@@ -286,7 +286,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
 
     fileprivate func prepare() {
         autoresizingMask = .flexibleWidth
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
     }
 
     fileprivate func beginRefreshing() {

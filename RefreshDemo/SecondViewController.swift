@@ -38,7 +38,7 @@ class SecondViewController: UITableViewController {
             }
         })
 
-        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock(UIColor.white, startLoading: {
+        self.tableView.refreshHeader = CustomRefreshHeaderView.headerWithRefreshingBlock(.white, startLoading: {
             let minseconds = 3 * Double(NSEC_PER_SEC)
             let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dtime, execute: {

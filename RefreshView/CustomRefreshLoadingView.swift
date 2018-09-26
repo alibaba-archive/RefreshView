@@ -78,8 +78,8 @@ open class CustomRefreshLoadingView: UIView {
         }
 
         self.imageViewLoading.image = getImage(of: "loading_circle")
-        self.imageViewLogo.backgroundColor = UIColor.clear
-        self.imageViewLoading.backgroundColor = UIColor.clear
+        self.imageViewLogo.backgroundColor = .clear
+        self.imageViewLoading.backgroundColor = .clear
         self.addSubview(self.imageViewLogo)
         self.addSubview(self.imageViewLoading)
         self.placeSubviews()
