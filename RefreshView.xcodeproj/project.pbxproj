@@ -19,6 +19,7 @@
 		C4F5766C1C633546007E04CC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5766A1C633546007E04CC /* UIView+Extension.swift */; };
 		C4F5766D1C633546007E04CC /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5766B1C633546007E04CC /* UIScrollView+Extension.swift */; };
 		C4F576731C633771007E04CC /* RefreshHeader+Extensition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F576721C633771007E04CC /* RefreshHeader+Extensition.swift */; };
+		D348495F21A3EBC800A3D092 /* FeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348495E21A3EBC800A3D092 /* FeedbackGenerator.swift */; };
 		F1FF97E51ECD76C7007232A8 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF97E41ECD76C7007232A8 /* RefreshView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		C4F5766A1C633546007E04CC /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C4F5766B1C633546007E04CC /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		C4F576721C633771007E04CC /* RefreshHeader+Extensition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RefreshHeader+Extensition.swift"; sourceTree = "<group>"; };
+		D348495E21A3EBC800A3D092 /* FeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackGenerator.swift; sourceTree = "<group>"; };
 		F1FF97E41ECD76C7007232A8 /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 				C4A86C7B1C7613A000C42235 /* Contant.swift */,
 				A10044791ECC34710050A8F0 /* CustomLogoManager.swift */,
 				F1FF97E41ECD76C7007232A8 /* RefreshView.swift */,
+				D348495E21A3EBC800A3D092 /* FeedbackGenerator.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				C4F5766C1C633546007E04CC /* UIView+Extension.swift in Sources */,
 				86E82F1C1CEEBC03009AE75F /* CustomRefreshLoadingView.swift in Sources */,
 				C4F576601C633415007E04CC /* CustomRefreshFooterView.swift in Sources */,
+				D348495F21A3EBC800A3D092 /* FeedbackGenerator.swift in Sources */,
 				C4A86C7C1C7613A000C42235 /* Contant.swift in Sources */,
 				C4F5765F1C633415007E04CC /* CustomRefreshHeaderView.swift in Sources */,
 				A100447A1ECC34710050A8F0 /* CustomLogoManager.swift in Sources */,

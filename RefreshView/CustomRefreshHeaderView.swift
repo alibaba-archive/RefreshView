@@ -63,6 +63,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
 
     fileprivate func didSetRefreshState() {
         if state == .refreshing {
+            FeedbackGenerator.impactOccurred()
             UIView.animate(withDuration: kCustomRefreshFastAnimationTime, animations: {
                 let top = (self.scrollViewOriginalInset?.top)! + self.sizeHeight
                 self.scrollView?.insetTop = top
