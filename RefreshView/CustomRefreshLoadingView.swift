@@ -9,7 +9,8 @@
 import UIKit
 
 open class CustomRefreshLoadingView: UIView {
-    fileprivate weak var scrollView: UIScrollView?
+//    fileprivate weak var scrollView: UIScrollView?
+    fileprivate weak var placeView: UIView?
     fileprivate var imageViewLogo: UIImageView!
     fileprivate var imageViewLoading: UIImageView!
 
@@ -50,15 +51,14 @@ open class CustomRefreshLoadingView: UIView {
     override open func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
 
-        if let newScrollView = newSuperview as? UIScrollView {
-            scrollView = newScrollView
-            scrollView?.bounces = false
-            originY = newScrollView.bounds.origin.y
-            originX = newScrollView.bounds.origin.x
-            sizeWidth = newScrollView.sizeWidth
-            sizeHeight = newScrollView.sizeHeight
+        if let view = newSuperview {
+            placeView = view
+            originY = view.bounds.origin.y
+            originX = view.bounds.origin.x
+            sizeWidth = view.sizeWidth
+            sizeHeight = view.sizeHeight
             commonInit()
-            backgroundColor = scrollView?.backgroundColor
+            backgroundColor = view.backgroundColor
         }
     }
 
@@ -106,7 +106,7 @@ open class CustomRefreshLoadingView: UIView {
     open func stopAnimation() {
         UIView.animate(withDuration: 0.5, animations: {
             self.alpha = 0
-            self.scrollView?.bounces = true
+//            self.placeView?.bounces = true
         }, completion: { (_) -> Void in
             self.imageViewLoading.layer.removeAnimation(forKey: "rotation")
             self.removeFromSuperview()

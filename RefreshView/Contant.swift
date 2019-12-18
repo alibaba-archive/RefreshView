@@ -15,6 +15,7 @@ let kRefreshLoadingKey = "loading"
 let kRefreshHeaderTag = 999
 let kRefreshFooterTag = 9999
 let kRefreshLoadingTag = 99999
+let kRefreshLoadingControllerTag = 999999
 
 let kCustomRefreshSlowAnimationTime = 0.4
 let kCustomRefreshFastAnimationTime = 0.25

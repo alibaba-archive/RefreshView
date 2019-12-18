@@ -19,7 +19,7 @@ class UIViewControllerDemo: UIViewController {
     }
 
     @objc func loadingData() {
-        tableView.isShowLoadingView = true
+        isShowLoadingView = true
 
         let minseconds = 3 * Double(NSEC_PER_SEC)
         let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
@@ -27,7 +27,7 @@ class UIViewControllerDemo: UIViewController {
             for index in 0...20 {
                 self.array.append(String(index))
             }
-            self.tableView.isShowLoadingView = false
+            self.isShowLoadingView = false
             self.tableView.reloadData()
         })
     }

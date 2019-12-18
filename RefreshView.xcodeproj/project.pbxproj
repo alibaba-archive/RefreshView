@@ -12,6 +12,7 @@
 		867980811CE4858C0017E17E /* InternationalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867980801CE4858C0017E17E /* InternationalControl.swift */; };
 		86E82F1C1CEEBC03009AE75F /* CustomRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E82F1B1CEEBC03009AE75F /* CustomRefreshLoadingView.swift */; };
 		A100447A1ECC34710050A8F0 /* CustomLogoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10044791ECC34710050A8F0 /* CustomLogoManager.swift */; };
+		C41F728F23A9FD5C0024FB3F /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41F728E23A9FD5C0024FB3F /* UIViewController+Extension.swift */; };
 		C4A86C7C1C7613A000C42235 /* Contant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A86C7B1C7613A000C42235 /* Contant.swift */; };
 		C4E781DA1C63451D004AAC64 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E781D91C63451D004AAC64 /* images.xcassets */; };
 		C4F5765F1C633415007E04CC /* CustomRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5765C1C633415007E04CC /* CustomRefreshHeaderView.swift */; };
@@ -32,6 +33,7 @@
 		A10044791ECC34710050A8F0 /* CustomLogoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLogoManager.swift; sourceTree = "<group>"; };
 		C40F22FF1C6331EE00F075CF /* RefreshView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RefreshView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40F23041C6331EE00F075CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C41F728E23A9FD5C0024FB3F /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C4A86C7B1C7613A000C42235 /* Contant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contant.swift; sourceTree = "<group>"; };
 		C4E781D91C63451D004AAC64 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		C4F5765C1C633415007E04CC /* CustomRefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshHeaderView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				A10044791ECC34710050A8F0 /* CustomLogoManager.swift */,
 				F1FF97E41ECD76C7007232A8 /* RefreshView.swift */,
 				D348495E21A3EBC800A3D092 /* FeedbackGenerator.swift */,
+				C41F728E23A9FD5C0024FB3F /* UIViewController+Extension.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1FF97E51ECD76C7007232A8 /* RefreshView.swift in Sources */,
+				C41F728F23A9FD5C0024FB3F /* UIViewController+Extension.swift in Sources */,
 				C4F576731C633771007E04CC /* RefreshHeader+Extensition.swift in Sources */,
 				867980791CE460ED0017E17E /* CustomRefreshView.swift in Sources */,
 				C4F5766C1C633546007E04CC /* UIView+Extension.swift in Sources */,
