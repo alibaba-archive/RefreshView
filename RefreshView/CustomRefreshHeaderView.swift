@@ -33,6 +33,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         }
 
         let imageView = UIImageView(image: image)
+        imageView.isHidden = CustomLogoManager.shared.isHideLogo
         self.addSubview(imageView)
         return imageView
     }()

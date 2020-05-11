@@ -57,7 +57,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
         }
 
         let imageView = UIImageView(image: image)
-        imageView.isHidden = true
+        imageView.isHidden = CustomLogoManager.shared.isHideLogo
         self.addSubview(imageView)
         return imageView
     }()
@@ -113,7 +113,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
     }
 
     fileprivate func hideFooterView(_ flag: Bool) {
-        logoImageView?.isHidden = flag
+        logoImageView?.isHidden = CustomLogoManager.shared.isHideLogo || flag
         circleImageView?.isHidden = flag
         statusLabel?.isHidden = flag
     }

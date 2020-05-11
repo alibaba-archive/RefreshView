@@ -76,6 +76,7 @@ open class CustomRefreshLoadingView: UIView {
         } else {
             self.imageViewLogo.image = getImage(of: CustomLogoManager.shared.logoName)
         }
+        self.imageViewLogo.isHidden = CustomLogoManager.shared.isHideLogo
 
         self.imageViewLoading.image = getImage(of: "loading_circle")
         self.imageViewLogo.backgroundColor = .clear

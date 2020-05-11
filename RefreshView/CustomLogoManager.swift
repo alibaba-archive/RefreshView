@@ -14,6 +14,7 @@ class CustomLogoManager {
 
     let logoName = "loading_logo"
     var logoImage: UIImage?
+    var isHideLogo: Bool = true
 
     private init() {}
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
-public func updateLogoIcon(logo logoIcon: UIImage) {
+public func updateLogoIcon(logo logoIcon: UIImage, isHideLogo: Bool = true) {
     CustomLogoManager.shared.logoImage = logoIcon
+    CustomLogoManager.shared.isHideLogo = isHideLogo
 }
