@@ -29,7 +29,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
         if let logoImage = CustomLogoManager.shared.logoImage {
             image = logoImage
         } else {
-            image = self.getImage(of: CustomLogoManager.shared.logoName)
+            image = Icon.icon(CustomLogoManager.shared.logoName) ?? UIImage()
         }
 
         let imageView = UIImageView(image: image)
@@ -39,7 +39,7 @@ open class CustomRefreshHeaderView: CustomRefreshView {
     }()
 
     lazy var circleImageView: UIImageView? = {
-        let image = self.getImage(of: "loading_circle")
+        let image = Icon.loadingCircle
         let imageView = UIImageView(image: image)
         self.addSubview(imageView)
         return imageView
@@ -76,16 +76,6 @@ open class CustomRefreshHeaderView: CustomRefreshView {
                     self.executeRefreshingCallback()
             })
         }
-    }
-
-    fileprivate func getImage(of name: String) -> UIImage {
-        let traitCollection = UITraitCollection(displayScale: 3)
-        let bundle = Bundle(for: classForCoder)
-        let image = UIImage(named: name, in: bundle, compatibleWith: traitCollection)
-        guard let newImage = image else {
-            return UIImage()
-        }
-        return newImage
     }
 
     fileprivate func initCircleLayer() {

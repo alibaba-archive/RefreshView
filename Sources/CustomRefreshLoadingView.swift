@@ -74,24 +74,16 @@ open class CustomRefreshLoadingView: UIView {
         if let logoImage = CustomLogoManager.shared.logoImage {
             self.imageViewLogo.image = logoImage
         } else {
-            self.imageViewLogo.image = getImage(of: CustomLogoManager.shared.logoName)
+            self.imageViewLogo.image = Icon.icon(CustomLogoManager.shared.logoName)
         }
         self.imageViewLogo.isHidden = CustomLogoManager.shared.isHideLogo
 
-        self.imageViewLoading.image = getImage(of: "loading_circle")
+        self.imageViewLoading.image = Icon.loadingCircle
         self.imageViewLogo.backgroundColor = .clear
         self.imageViewLoading.backgroundColor = .clear
         self.addSubview(self.imageViewLogo)
         self.addSubview(self.imageViewLoading)
         self.placeSubviews()
-    }
-
-    fileprivate func getImage(of name: String) -> UIImage {
-        let traitCollection = UITraitCollection(displayScale: 3)
-        let bundle = Bundle(for: self.classForCoder)
-        guard let image = UIImage(named: name, in: bundle, compatibleWith: traitCollection) else { return UIImage() }
-
-        return image
     }
 
     open func startAnimation() {

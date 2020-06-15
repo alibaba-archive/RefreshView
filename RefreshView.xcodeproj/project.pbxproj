@@ -7,40 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		867980791CE460ED0017E17E /* CustomRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867980781CE460ED0017E17E /* CustomRefreshView.swift */; };
 		8679807C1CE484AD0017E17E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8679807E1CE484AD0017E17E /* Localizable.strings */; };
-		867980811CE4858C0017E17E /* InternationalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867980801CE4858C0017E17E /* InternationalControl.swift */; };
-		86E82F1C1CEEBC03009AE75F /* CustomRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E82F1B1CEEBC03009AE75F /* CustomRefreshLoadingView.swift */; };
-		A100447A1ECC34710050A8F0 /* CustomLogoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10044791ECC34710050A8F0 /* CustomLogoManager.swift */; };
-		C4A86C7C1C7613A000C42235 /* Contant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A86C7B1C7613A000C42235 /* Contant.swift */; };
+		C4DFDEFF2498AC37007BE236 /* CustomRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEF32498AC37007BE236 /* CustomRefreshFooterView.swift */; };
+		C4DFDF002498AC37007BE236 /* CustomLogoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEF42498AC37007BE236 /* CustomLogoManager.swift */; };
+		C4DFDF012498AC37007BE236 /* CustomRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEF52498AC37007BE236 /* CustomRefreshView.swift */; };
+		C4DFDF022498AC37007BE236 /* FeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEF62498AC37007BE236 /* FeedbackGenerator.swift */; };
+		C4DFDF032498AC37007BE236 /* InternationalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEF72498AC37007BE236 /* InternationalControl.swift */; };
+		C4DFDF042498AC37007BE236 /* RefreshHeader+Extensition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEF82498AC37007BE236 /* RefreshHeader+Extensition.swift */; };
+		C4DFDF052498AC37007BE236 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEF92498AC37007BE236 /* RefreshView.swift */; };
+		C4DFDF062498AC37007BE236 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEFA2498AC37007BE236 /* UIView+Extension.swift */; };
+		C4DFDF072498AC37007BE236 /* CustomRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEFB2498AC37007BE236 /* CustomRefreshLoadingView.swift */; };
+		C4DFDF082498AC37007BE236 /* CustomRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEFC2498AC37007BE236 /* CustomRefreshHeaderView.swift */; };
+		C4DFDF092498AC37007BE236 /* Contant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEFD2498AC37007BE236 /* Contant.swift */; };
+		C4DFDF0A2498AC37007BE236 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDEFE2498AC37007BE236 /* UIScrollView+Extension.swift */; };
 		C4E781DA1C63451D004AAC64 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E781D91C63451D004AAC64 /* images.xcassets */; };
-		C4F5765F1C633415007E04CC /* CustomRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5765C1C633415007E04CC /* CustomRefreshHeaderView.swift */; };
-		C4F576601C633415007E04CC /* CustomRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5765D1C633415007E04CC /* CustomRefreshFooterView.swift */; };
-		C4F5766C1C633546007E04CC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5766A1C633546007E04CC /* UIView+Extension.swift */; };
-		C4F5766D1C633546007E04CC /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5766B1C633546007E04CC /* UIScrollView+Extension.swift */; };
-		C4F576731C633771007E04CC /* RefreshHeader+Extensition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F576721C633771007E04CC /* RefreshHeader+Extensition.swift */; };
-		D348495F21A3EBC800A3D092 /* FeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348495E21A3EBC800A3D092 /* FeedbackGenerator.swift */; };
-		F1FF97E51ECD76C7007232A8 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF97E41ECD76C7007232A8 /* RefreshView.swift */; };
+		C4ED405D2499F2770011FC25 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ED405C2499F2770011FC25 /* Icon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		867980781CE460ED0017E17E /* CustomRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshView.swift; sourceTree = "<group>"; };
 		8679807D1CE484AD0017E17E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8679807F1CE484C40017E17E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		867980801CE4858C0017E17E /* InternationalControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternationalControl.swift; sourceTree = "<group>"; };
-		86E82F1B1CEEBC03009AE75F /* CustomRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshLoadingView.swift; sourceTree = "<group>"; };
-		A10044791ECC34710050A8F0 /* CustomLogoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLogoManager.swift; sourceTree = "<group>"; };
 		C40F22FF1C6331EE00F075CF /* RefreshView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RefreshView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40F23041C6331EE00F075CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C4A86C7B1C7613A000C42235 /* Contant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contant.swift; sourceTree = "<group>"; };
+		C4DFDEF32498AC37007BE236 /* CustomRefreshFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshFooterView.swift; sourceTree = "<group>"; };
+		C4DFDEF42498AC37007BE236 /* CustomLogoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLogoManager.swift; sourceTree = "<group>"; };
+		C4DFDEF52498AC37007BE236 /* CustomRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshView.swift; sourceTree = "<group>"; };
+		C4DFDEF62498AC37007BE236 /* FeedbackGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackGenerator.swift; sourceTree = "<group>"; };
+		C4DFDEF72498AC37007BE236 /* InternationalControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternationalControl.swift; sourceTree = "<group>"; };
+		C4DFDEF82498AC37007BE236 /* RefreshHeader+Extensition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RefreshHeader+Extensition.swift"; sourceTree = "<group>"; };
+		C4DFDEF92498AC37007BE236 /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		C4DFDEFA2498AC37007BE236 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		C4DFDEFB2498AC37007BE236 /* CustomRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshLoadingView.swift; sourceTree = "<group>"; };
+		C4DFDEFC2498AC37007BE236 /* CustomRefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshHeaderView.swift; sourceTree = "<group>"; };
+		C4DFDEFD2498AC37007BE236 /* Contant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contant.swift; sourceTree = "<group>"; };
+		C4DFDEFE2498AC37007BE236 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		C4E781D91C63451D004AAC64 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
-		C4F5765C1C633415007E04CC /* CustomRefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshHeaderView.swift; sourceTree = "<group>"; };
-		C4F5765D1C633415007E04CC /* CustomRefreshFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshFooterView.swift; sourceTree = "<group>"; };
-		C4F5766A1C633546007E04CC /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		C4F5766B1C633546007E04CC /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
-		C4F576721C633771007E04CC /* RefreshHeader+Extensition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RefreshHeader+Extensition.swift"; sourceTree = "<group>"; };
-		D348495E21A3EBC800A3D092 /* FeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackGenerator.swift; sourceTree = "<group>"; };
-		F1FF97E41ECD76C7007232A8 /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		C4ED405C2499F2770011FC25 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,9 @@
 		C40F22F51C6331EE00F075CF = {
 			isa = PBXGroup;
 			children = (
-				C40F23011C6331EE00F075CF /* RefreshView */,
+				C4DFDEF22498AC12007BE236 /* Sources */,
+				C40F23011C6331EE00F075CF /* Resource */,
+				C40F23041C6331EE00F075CF /* Info.plist */,
 				C40F23001C6331EE00F075CF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,34 +74,33 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C40F23011C6331EE00F075CF /* RefreshView */ = {
+		C40F23011C6331EE00F075CF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				C4E781D81C633D8E004AAC64 /* Source */,
-				C40F23041C6331EE00F075CF /* Info.plist */,
 				C4E781D91C63451D004AAC64 /* images.xcassets */,
 				8679807E1CE484AD0017E17E /* Localizable.strings */,
 			);
-			path = RefreshView;
+			path = Resource;
 			sourceTree = "<group>";
 		};
-		C4E781D81C633D8E004AAC64 /* Source */ = {
+		C4DFDEF22498AC12007BE236 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C4F5766A1C633546007E04CC /* UIView+Extension.swift */,
-				867980801CE4858C0017E17E /* InternationalControl.swift */,
-				C4F576721C633771007E04CC /* RefreshHeader+Extensition.swift */,
-				C4F5766B1C633546007E04CC /* UIScrollView+Extension.swift */,
-				C4F5765C1C633415007E04CC /* CustomRefreshHeaderView.swift */,
-				C4F5765D1C633415007E04CC /* CustomRefreshFooterView.swift */,
-				86E82F1B1CEEBC03009AE75F /* CustomRefreshLoadingView.swift */,
-				867980781CE460ED0017E17E /* CustomRefreshView.swift */,
-				C4A86C7B1C7613A000C42235 /* Contant.swift */,
-				A10044791ECC34710050A8F0 /* CustomLogoManager.swift */,
-				F1FF97E41ECD76C7007232A8 /* RefreshView.swift */,
-				D348495E21A3EBC800A3D092 /* FeedbackGenerator.swift */,
+				C4DFDEFD2498AC37007BE236 /* Contant.swift */,
+				C4DFDEF42498AC37007BE236 /* CustomLogoManager.swift */,
+				C4DFDEF32498AC37007BE236 /* CustomRefreshFooterView.swift */,
+				C4DFDEFC2498AC37007BE236 /* CustomRefreshHeaderView.swift */,
+				C4DFDEFB2498AC37007BE236 /* CustomRefreshLoadingView.swift */,
+				C4DFDEF52498AC37007BE236 /* CustomRefreshView.swift */,
+				C4DFDEF62498AC37007BE236 /* FeedbackGenerator.swift */,
+				C4DFDEF72498AC37007BE236 /* InternationalControl.swift */,
+				C4DFDEF82498AC37007BE236 /* RefreshHeader+Extensition.swift */,
+				C4DFDEF92498AC37007BE236 /* RefreshView.swift */,
+				C4DFDEFE2498AC37007BE236 /* UIScrollView+Extension.swift */,
+				C4DFDEFA2498AC37007BE236 /* UIView+Extension.swift */,
+				C4ED405C2499F2770011FC25 /* Icon.swift */,
 			);
-			name = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,7 +145,7 @@
 				TargetAttributes = {
 					C40F22FE1C6331EE00F075CF = {
 						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -182,18 +185,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1FF97E51ECD76C7007232A8 /* RefreshView.swift in Sources */,
-				C4F576731C633771007E04CC /* RefreshHeader+Extensition.swift in Sources */,
-				867980791CE460ED0017E17E /* CustomRefreshView.swift in Sources */,
-				C4F5766C1C633546007E04CC /* UIView+Extension.swift in Sources */,
-				86E82F1C1CEEBC03009AE75F /* CustomRefreshLoadingView.swift in Sources */,
-				C4F576601C633415007E04CC /* CustomRefreshFooterView.swift in Sources */,
-				D348495F21A3EBC800A3D092 /* FeedbackGenerator.swift in Sources */,
-				C4A86C7C1C7613A000C42235 /* Contant.swift in Sources */,
-				C4F5765F1C633415007E04CC /* CustomRefreshHeaderView.swift in Sources */,
-				A100447A1ECC34710050A8F0 /* CustomLogoManager.swift in Sources */,
-				867980811CE4858C0017E17E /* InternationalControl.swift in Sources */,
-				C4F5766D1C633546007E04CC /* UIScrollView+Extension.swift in Sources */,
+				C4DFDF082498AC37007BE236 /* CustomRefreshHeaderView.swift in Sources */,
+				C4DFDF052498AC37007BE236 /* RefreshView.swift in Sources */,
+				C4DFDF032498AC37007BE236 /* InternationalControl.swift in Sources */,
+				C4DFDF062498AC37007BE236 /* UIView+Extension.swift in Sources */,
+				C4DFDF072498AC37007BE236 /* CustomRefreshLoadingView.swift in Sources */,
+				C4DFDEFF2498AC37007BE236 /* CustomRefreshFooterView.swift in Sources */,
+				C4DFDF002498AC37007BE236 /* CustomLogoManager.swift in Sources */,
+				C4DFDF0A2498AC37007BE236 /* UIScrollView+Extension.swift in Sources */,
+				C4DFDF042498AC37007BE236 /* RefreshHeader+Extensition.swift in Sources */,
+				C4ED405D2499F2770011FC25 /* Icon.swift in Sources */,
+				C4DFDF022498AC37007BE236 /* FeedbackGenerator.swift in Sources */,
+				C4DFDF092498AC37007BE236 /* Contant.swift in Sources */,
+				C4DFDF012498AC37007BE236 /* CustomRefreshView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +339,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RefreshView/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Teambition.RefreshView;
@@ -355,7 +359,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RefreshView/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Teambition.RefreshView;

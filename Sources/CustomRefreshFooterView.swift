@@ -53,7 +53,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
         if let logoImage = CustomLogoManager.shared.logoImage {
             image = logoImage
         } else {
-            image = self.getImage(of: CustomLogoManager.shared.logoName)
+            image = Icon.icon(CustomLogoManager.shared.logoName) ?? UIImage()
         }
 
         let imageView = UIImageView(image: image)
@@ -63,7 +63,7 @@ open class CustomRefreshFooterView: CustomRefreshView {
     }()
 
     lazy var circleImageView: UIImageView? = {
-        let image = self.getImage(of: "loading_circle")
+        let image = Icon.loadingCircle
         let imageView = UIImageView(image: image)
         imageView.isHidden = true
         self.addSubview(imageView)
@@ -79,16 +79,6 @@ open class CustomRefreshFooterView: CustomRefreshView {
         self.addSubview(statusLabel)
         return statusLabel
     }()
-
-    func getImage(of name: String) -> UIImage {
-        let traitCollection = UITraitCollection(displayScale: 3)
-        let bundle = Bundle(for: classForCoder)
-        let image = UIImage(named: name, in: bundle, compatibleWith: traitCollection)
-        guard let newImage = image else {
-            return UIImage()
-        }
-        return newImage
-    }
 
     fileprivate func cellsCount() -> Int {
         var count = 0
