@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "TBRefreshView"
-  spec.version      = "1.5.2"
+  spec.version      = "1.5.4"
   spec.summary      = "TBRefreshView provides three loading method in UITableView or UICollectionView: pull to refresh,  scroll to bottom to refresh and loading."
 
   spec.homepage     = "https://github.com/teambition/RefreshView"
